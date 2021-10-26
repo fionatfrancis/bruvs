@@ -1,0 +1,308 @@
+Filename,Frame,Time (mins),Period,Period time (mins),OpCode,TapeReader,Depth,Comment,Date,Time,habitat_type,complexity,current_speed,temperature,left_camera,right_camera,Family,Genus,Species,Code,MaxN,Has fed
+Left (3).MP4,5749,38.4656,60min_start,5.9648,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,1,No
+Left (2).MP4,27769,33.0769,60min_start,0.5761,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Bothidae,Citharichthys,stigmaeus,172717,1,No
+Left (4).MP4,30732,69.9933,60min_start,37.4925,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Cottidae,Scorpaenichthys,marmoratus,692068,1,No
+Left (3).MP4,27012,50.2902,60min_start,17.7894,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,50,No
+Left (3).MP4,29992,51.9475,60min_start,19.4466,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Embiotocidae,Embiotoca,lateralis,169744,1,No
+Left (6).MP4,5243,91.0871,60min_start,58.5863,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,2,No
+Left (4).MP4,16685,62.1816,60min_start,29.6808,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,9,No
+Left (5).MP4,23954,83.8582,60min_start,51.3574,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,stelleri,167113,1,No
+Left (6).MP4,6829,91.9691,60min_start,59.4683,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,29501,34.0401,60min_start,1.5393,ansellpoint_1,Fiona Francis,19.1,,10/17/2019,11:13,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,10,No
+Left_003.MP4,9190,40.5127,30min_start,16.6633,birdislet_1,Fiona Francis,21.8,,9/6/2019,11:26,rocky reef,,,,1035,1034,Embiotocidae,Rhacochilus,vacca,169754,2,No
+Left_002.MP4,15173,26.1389,30min_start,2.2895,birdislet_1,Fiona Francis,21.8,,9/6/2019,11:26,rocky reef,,,,1035,1034,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left_003.MP4,901,35.9031,30min_start,12.0537,birdislet_1,Fiona Francis,21.8,,9/6/2019,11:26,rocky reef,,,,1035,1034,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (2).MP4,5168,20.5083,60min,5.9654,birdislet_2,Fiona Francis,26.8,,11/20/2019,11:07,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,1,No
+Left (4).MP4,21298,64.7469,60min,50.204,birdislet_2,Fiona Francis,26.8,,11/20/2019,11:07,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (4).MP4,28123,68.5424,60min,53.9995,birdislet_2,Fiona Francis,26.8,,11/20/2019,11:07,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,2,No
+Left (1).MP4,30061,16.7173,60min,2.1744,birdislet_2,Fiona Francis,26.8,,11/20/2019,11:07,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,18241,27.7783,60min,13.2354,birdislet_2,Fiona Francis,26.8,,11/20/2019,11:07,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (4).MP4,17035,62.3762,60min,34.5601,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,,,,,3,No
+Left (2).MP4,19285,28.3589,60min,0.5428,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Cottidae,Scorpaenichthys,marmoratus,692068,1,No
+Left (3).MP4,7748,39.5773,60min,11.7612,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,70,No
+Left (2).MP4,24359,31.1806,60min,3.3645,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,7,No
+Left (4).MP4,15843,61.7133,60min,33.8972,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,3,No
+Left (3).MP4,22651,47.865,60min,20.0489,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,stelleri,167113,1,No
+Left (5).MP4,18456,80.8007,60min,52.9846,bootspongewall_1,Fiona Francis,17,,10/11/2019,12:49,rocky reef,,,,1049,1048,Hexagrammidae,Oxylebius,pictus,167118,1,No
+Left (3).MP4,23327,48.241,60min,15.3854,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,,,,,5,No
+Left (3).MP4,1310,35.9971,60min,3.1415,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Aulorhynchidae,Aulorhynchus,flavidus,166404,50,No
+Left (5).MP4,16775,79.8659,60min,47.0103,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,300,No
+Left (3).MP4,8814,40.1701,60min,7.3145,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,20,No
+Left (3).MP4,24015,48.6236,60min,15.768,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,5,No
+Left (3).MP4,11341,41.5754,60min,8.7198,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (5).MP4,15437,79.1218,60min,46.2662,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (2).MP4,28659,33.5719,60min,0.7163,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (2).MP4,31122,34.9416,60min,2.086,christiebuoy_1,Fiona Francis,20,,10/1/2019,11:29,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,ruberrimus,166740,1,Yes
+Left (3).MP4,6992,39.1569,60min,13.0508,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,,,,,1,No
+Left (2).MP4,24104,31.0388,60min,4.9327,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,6,No
+Left (3).MP4,26181,49.8281,60min,23.722,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (2).MP4,16164,26.6233,60min,0.5172,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (4).MP4,3109,54.6318,60min,28.5257,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,17145,44.8031,60min,18.697,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (2).MP4,15331,26.16,60min,0.0539,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,58,No
+Left (3).MP4,6852,39.079,60min,12.973,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,4,No
+Left (4).MP4,3364,54.7736,60min,28.6675,cliffcove_1,Fiona Francis,26.8,,11/14/2019,13:32,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,nigrocinctus,166732,2,No
+Left_3.MP4,16674,44.5412,60min,16.5176,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,,,,,1,No
+Left_4.MP4,28134,68.5485,60min,40.5249,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,3,No
+Left_6.MP4,22873,100.8913,,,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left_2.MP4,25200,31.6483,60min,3.6247,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left_3.MP4,10477,41.0949,60min,13.0714,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left_3.MP4,2667,36.7517,60min,8.7282,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,10,No
+Left_3.MP4,9959,40.8069,60min,12.7833,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,10,No
+Left_4.MP4,17899,62.8567,60min,34.8331,defenceinshorebioherm_1,Fiona Francis,23.1,,9/12/2019,10:40,sponge reef,,,,1047,1046,Squalidae,Squalus,suckleyi,160617,1,No
+Left (3).MP4,30544,52.2544,60min,35.2969,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,,,,,3,No
+Left (3).MP4,6989,39.1552,60min,22.1977,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (2).MP4,22099,29.9238,60min,12.9663,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (4).MP4,1916,53.9684,60min,37.0109,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (2).MP4,17786,27.5253,60min,10.5678,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,1,No
+Left (2).MP4,21301,29.48,60min,12.5225,defenceinshorebioherm_2,Fiona Francis,25.3,,10/30/2019,13:42,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,7,No
+Left (2).MP4,28410,33.4334,60min,19.7647,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,,,,,1,No
+Left (2).MP4,21762,29.7364,60min,16.0677,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,1,No
+Left (2).MP4,18153,27.7294,60min,14.0607,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (1).MP4,30122,16.7512,60min,3.0825,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (3).MP4,24849,49.0874,60min,35.4187,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (2).MP4,4694,20.2447,60min,6.576,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Phocidae,Phoca,vitulina,180649,1,No
+Left (3).MP4,7495,39.4366,60min,25.768,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (2).MP4,6052,20.9999,60min,7.3312,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,1,No
+Left (1).MP4,29700,16.5165,60min,2.8478,defenceinshorebioherm_3,Fiona Francis,25.2,,11/13/2019,10:56,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,8,No
+Left (5).MP4,8768,75.4131,60min,50.1306,defenceoffshorebioherm_1,Fiona Francis,28.6,,10/30/2019,12:13,sponge reef,,,,1049,1048,,,,,5,No
+Left (5).MP4,15664,79.2481,60min,53.9656,defenceoffshorebioherm_1,Fiona Francis,28.6,,10/30/2019,12:13,sponge reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,2,No
+Left (2).MP4,23273,30.5767,60min,5.2942,defenceoffshorebioherm_1,Fiona Francis,28.6,,10/30/2019,12:13,sponge reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (4).MP4,4066,55.164,60min,29.8815,defenceoffshorebioherm_1,Fiona Francis,28.6,,10/30/2019,12:13,sponge reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (2).MP4,15979,26.5204,60min,1.2379,defenceoffshorebioherm_1,Fiona Francis,28.6,,10/30/2019,12:13,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,5,No
+Left (2).MP4,20127,28.8271,60min,12.4029,defenceoffshorebioherm_2,Fiona Francis,28.7,,11/13/2019,10:10,sponge reef,,,,1047,1046,,,,,1,No
+Left (2).MP4,27143,32.7288,60min,16.3046,defenceoffshorebioherm_2,Fiona Francis,28.7,,11/13/2019,10:10,sponge reef,,,,1047,1046,Bathymasteridae,Ronquilus,jordani,170951,1,No
+Left (5).MP4,6930,74.391,60min,57.9668,defenceoffshorebioherm_2,Fiona Francis,28.7,,11/13/2019,10:10,sponge reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (4).MP4,16642,62.1577,60min,45.7335,defenceoffshorebioherm_2,Fiona Francis,28.7,,11/13/2019,10:10,sponge reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (2).MP4,14760,25.8425,60min,9.4183,defenceoffshorebioherm_2,Fiona Francis,28.7,,11/13/2019,10:10,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,5,No
+Left (5).MP4,21462,82.4724,60min,57.5013,defencesouthside_1,Fiona Francis,23.4,,9/12/2019,11:47,rocky reef,,,,1049,1048,,,,,1,No
+Left (2).MP4,29983,34.3082,60min,9.3371,defencesouthside_1,Fiona Francis,23.4,,9/12/2019,11:47,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (5).MP4,23273,83.4795,60min,58.5085,defencesouthside_1,Fiona Francis,23.4,,9/12/2019,11:47,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (3).MP4,13022,42.5102,60min,17.5392,defencesouthside_1,Fiona Francis,23.4,,9/12/2019,11:47,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,6,No
+Left (4).MP4,10669,59.0362,60min,22.9012,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,,,,,10,No
+Left (3).MP4,4460,37.8823,60min,1.7473,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,Bathymasteridae,Ronquilus,jordani,170951,4,No
+Left (5).MP4,21798,82.9262,60min,46.7912,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,Embiotocidae,Cymatogaster,aggregata,169739,1000,No
+Left (3).MP4,3480,37.3373,60min,1.2023,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,Gobiidae,Rhinogobiops,nicholsii,636877,10,No
+Left (5).MP4,30219,87.6092,60min,51.4742,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (4).MP4,22438,65.5811,60min,29.4461,fieldof1000_1,Fiona Francis,21.1,,9/9/2019,10:00,sponge garden,,,,1035,1034,Squalidae,Squalus,suckleyi,160617,2,No
+Left (2).MP4,24410,31.209,60min,10.0128,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,,,,,4,No
+Left (2).MP4,7683,21.9069,60min,0.7107,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,2,No
+Left (3).MP4,28404,51.0643,60min,29.8682,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,Cottidae,Artedius,harringtoni,167213,1,No
+Left (2).MP4,6961,21.5054,60min,0.3092,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (5).MP4,14239,78.4556,60min,57.2594,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (2).MP4,31451,35.1245,60min,13.9284,fieldof1000_2,Fiona Francis,21,,9/11/2019,10:52,sponge garden,,,,1049,1048,Squalidae,Squalus,suckleyi,160617,2,No
+Left (2).MP4,17656,27.453,60min,6.2006,fieldof1000_3,Fiona Francis,25.9,,11/19/2019,11:15,sponge garden,,,,1047,1046,,,,,5,No
+Left (2).MP4,17204,27.2016,60min,5.9493,fieldof1000_3,Fiona Francis,25.9,,11/19/2019,11:15,sponge garden,,,,1047,1046,Bathymasteridae,Ronquilus,jordani,170951,2,No
+Left (2).MP4,25918,32.0476,60min,10.7952,fieldof1000_3,Fiona Francis,25.9,,11/19/2019,11:15,sponge garden,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,6,No
+Left (3).MP4,20535,46.6883,60min,25.436,fieldof1000_3,Fiona Francis,25.9,,11/19/2019,11:15,sponge garden,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (5).MP4,28495,86.3835,60min,51.115,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Anarrichadidae,Anarrhichthys,ocellatus,171345,1,No
+Left (5).MP4,6717,74.2725,60min,39.004,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,4,No
+Left (3).MP4,27890,50.7785,60min,15.5099,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (5).MP4,26666,85.3664,60min,50.0978,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (4).MP4,15231,61.373,60min,26.1044,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,3,No
+Left (5).MP4,16408,79.6618,60min,44.3932,halkettbayeast_1,Fiona Francis,20,,10/11/2019,11:18,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (4).MP4,20449,64.2748,60min,28.3594,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,1,No
+Left (4).MP4,5627,56.0321,60min,20.1168,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left (5).MP4,26156,85.0828,60min,49.1675,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Hexagrammidae,Oxylebius,pictus,167118,1,No
+Left (6).MP4,4671,90.769,60min,54.8537,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,3,No
+Left (3).MP4,7109,39.222,60min,3.3066,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,5,No
+Left (3).MP4,1779,36.2579,60min,0.3426,halkettbayeast_2,Fiona Francis,23.7,,11/14/2019,11:19,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,3,No
+Left (3).MP4,5776,38.4807,60min,17.3095,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,250,No
+Left (2).MP4,9969,23.1782,60min,2.007,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,30,No
+Left (2).MP4,14192,25.5266,60min,4.3555,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (2).MP4,21626,29.6607,60min,8.4896,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (3).MP4,22926,48.018,60min,26.8468,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,25327,31.7189,60min,10.5478,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (4).MP4,18398,63.1342,60min,41.963,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,35,No
+Left (2).MP4,27657,33.0146,60min,11.8435,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,3,No
+Left (2).MP4,19338,28.3884,60min,7.2172,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,proriger,166736,3,No
+Left (3).MP4,5579,38.3711,60min,17.2,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,ruberrimus,166740,1,No
+Left (4).MP4,16948,62.3278,60min,41.1567,halkettbioherm_1,Fiona Francis,31.7,,10/31/2019,11:27,sponge reef,,,,1047,1046,Squalidae,Squalus,suckleyi,160617,1,No
+Left (4).MP4,30784,70.0222,60min,40.0906,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,,,,,12,No
+Left (4).MP4,26675,67.7371,60min,37.8055,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,4,No
+Left (3).MP4,22508,47.7855,60min,17.8539,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Cottidae,Artedius,harringtoni,167213,1,No
+Left (4).MP4,8196,57.4607,60min,27.5292,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,50,No
+Left (5).MP4,29434,86.9057,60min,56.9741,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,1,No
+Left (4).MP4,23640,66.0493,60min,36.1177,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (6).MP4,14792,96.3974,,,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (3).MP4,22037,47.5236,60min,17.592,halkettsign_1,Fiona Francis,23.9,,10/11/2019,9:49,rocky reef,,,,1049,1048,Syngnathidae,Syngnathus,leptorhynchus,166462,1,No
+Left_004.MP4,3384,54.7847,60min,20.0067,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,500,No
+Left_003.MP4,29702,51.7862,60min,17.0081,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,5,No
+Left_003.MP4,14125,43.1236,60min,8.3456,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left_004.MP4,14159,60.7768,60min,25.9988,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left_006.MP4,214,88.2904,60min,53.5123,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,2,No
+Left_004.MP4,4929,55.6439,60min,20.8658,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left_002.MP4,30828,34.7781,60min,0,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,835,No
+Left_005.MP4,11930,77.1715,60min,42.3935,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left_004.MP4,22651,65.4993,60min,30.7212,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,nigrocinctus,166732,1,No
+Left_005.MP4,16173,79.5311,60min,44.753,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,pinniger,166734,1,No
+Left_004.MP4,30691,69.9705,60min,35.1924,helipad_1,Fiona Francis,20.8,,9/5/2019,10:03,rocky reef,,,,1047,1046,Squalidae,Squalus,suckleyi,160617,2,No
+Left (4).MP4,29969,69.5689,60min,57.0548,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,,,,,1,No
+Left (2).MP4,4119,19.9249,60min,7.4107,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,300,No
+Left (1).MP4,30876,17.1705,60min,4.6563,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,20,No
+Left (2).MP4,29869,34.2448,60min,21.7306,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (4).MP4,8515,57.6381,60min,45.124,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (1).MP4,29406,16.353,60min,3.8388,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Phocidae,Phoca,vitulina,180649,1,No
+Left (4).MP4,5765,56.1088,60min,43.5947,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (2).MP4,7811,21.9781,60min,9.4639,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (1).MP4,29223,16.2512,60min,3.7371,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,300,No
+Left (4).MP4,370,53.1086,60min,40.5944,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left (3).MP4,29070,51.4347,60min,38.9205,helipad_2,Fiona Francis,21.3,,11/5/2019,11:49,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,nigrocinctus,166732,1,No
+Left (4).MP4,24643,66.6071,60min,46.0616,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,,,,,1,No
+Left (4).MP4,22255,65.2791,60min,44.7336,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,250,No
+Left (3).MP4,1405,36.0499,60min,15.5044,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,3,No
+Left (2).MP4,15935,26.4959,60min,5.9504,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left (2).MP4,9092,22.6904,60min,2.1449,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (2).MP4,5319,20.5922,60min,0.0467,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Hexagrammidae,Hexagrammos,stelleri,167113,2,No
+Left (3).MP4,15823,44.0679,60min,23.5224,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Hexagrammidae,Oxylebius,pictus,167118,2,No
+Left (3).MP4,25524,49.4627,60min,28.9172,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (2).MP4,29579,34.0835,60min,13.538,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (4).MP4,22468,65.3976,60min,44.852,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Scorpaenidae,Sebastes,emphaeus,166718,3,No
+Left (3).MP4,25524,49.4627,60min,28.9172,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,17,No
+Left (2).MP4,8691,22.4674,60min,1.9219,huttcloudpair_1,Fiona Francis,21,,9/6/2019,12:33,sponge garden,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,8,Yes
+Left (3).MP4,22813,47.9551,60min,24.7558,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,,,,,1,No
+Left (2).MP4,10195,23.3038,60min,0.1045,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,2,No
+Left (3).MP4,11440,41.6305,60min,18.4312,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left (3).MP4,15401,43.8332,60min,20.6339,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,2,No
+Left (5).MP4,7702,74.8203,60min,51.621,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Hexagrammidae,Hexagrammos,stelleri,167113,1,No
+Left (3).MP4,28180,50.9398,60min,27.7405,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Hexagrammidae,Oxylebius,pictus,167118,2,No
+Left (2).MP4,21633,29.6646,60min,6.4653,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (3).MP4,15680,43.9884,60min,20.7891,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,2,No
+Left (4).MP4,3572,54.8893,60min,31.69,huttcloudpair_2,Fiona Francis,20.4,,9/11/2019,11:44,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,10,No
+Left (4).MP4,22101,65.1935,60 min,53.1431,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,1000,No
+Left (1).MP4,30368,16.888,60 min,4.8376,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,6,No
+Left (1).MP4,22982,12.7805,60 min,0.7302,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,4,Yes
+Left (1).MP4,27601,15.3492,60 min,3.2989,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (1).MP4,26156,14.5456,60 min,2.4953,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Hexagrammidae,Hexagrammos,stelleri,167113,1,No
+Left (1).MP4,28593,15.9009,60 min,3.8505,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Hexagrammidae,Oxylebius,pictus,167118,1,No
+Left (4).MP4,21250,64.7202,60 min,52.6698,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Phocidae,Phoca,vitulina,180649,1,No
+Left (1).MP4,27681,15.3937,60 min,3.3433,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (1).MP4,30019,16.6939,60 min,4.6435,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (1).MP4,25788,14.341,60 min,2.2906,huttcloudpair_3,Fiona Francis,23.7,,11/19/2019,12:08,sponge garden,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,1,No
+GH020005.MP4,17263,27.2344,60 min,5.9042,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,,,,,2,No
+GH020005.MP4,7164,21.6183,60 min,0.2881,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+GH020005.MP4,13704,25.2552,60 min,3.925,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,2,No
+GH030005.MP4,7537,39.46,60 min,18.1298,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+GH020005.MP4,18205,27.7583,60 min,6.4281,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Scorpaenidae,Sebastes,caurinus,166713,2,No
+GH020005.MP4,10467,23.4551,60 min,2.1249,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+GH020005.MP4,14915,25.9287,60 min,4.5985,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+GH040005.MP4,29493,69.3042,60 min,47.974,larsenbay_1,Fiona Francis,21.4,switched cameras by accident,9/6/2019,10:04,rocky reef,,,,1049,1046,Squalidae,Squalus,suckleyi,160617,2,No
+Left (3).MP4,1352,36.0204,60min,18.8232,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,,,,,1,No
+Left (2).MP4,254,17.7755,60min,0.5784,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,1,No
+Left (1).MP4,31313,17.4135,60min,0.2163,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (2).MP4,12078,24.351,60min,7.1538,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (2).MP4,6229,21.0983,60min,3.9011,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,13209,24.98,60min,7.7828,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (2).MP4,16119,26.5982,60min,9.4011,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (1).MP4,30969,17.2222,60min,0.025,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left (3).MP4,30372,52.1588,60min,34.9616,larsenbay_2,Fiona Francis,21,,10/10/2019,14:29,rocky reef,,,,1049,1048,Squalidae,Squalus,suckleyi,160617,1,No
+Left (2).MP4,1098,18.2449,60 min,5.3726,larsenbay_3,Fiona Francis,22.9,,11/20/2019,11:55,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (2).MP4,6176,21.0688,60 min,8.1965,larsenbay_3,Fiona Francis,22.9,,11/20/2019,11:55,rocky reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,2,No
+Left (2).MP4,9744,23.053,60 min,10.1807,larsenbay_3,Fiona Francis,22.9,,11/20/2019,11:55,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (3).MP4,4728,37.8979,60 min,25.0256,larsenbay_3,Fiona Francis,22.9,,11/20/2019,11:55,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,11,No
+Left (2).MP4,3238,19.435,60 min,6.5627,larsenbay_3,Fiona Francis,22.9,,11/20/2019,11:55,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (2).MP4,30312,34.4911,60 min,2.2072,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,,,,,1,No
+Left (3).MP4,185,35.3714,60 min,3.0875,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Bathymasteridae,Ronquilus,jordani,170951,3,No
+Left (5).MP4,2686,72.0308,60 min,39.7469,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,500,No
+Left (4).MP4,19120,63.5357,60 min,31.2518,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,10,No
+Left (4).MP4,6528,56.5331,60 min,24.2492,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (5).MP4,13702,78.157,60 min,45.873,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (5).MP4,25712,84.8359,60 min,52.5519,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (3).MP4,7510,39.445,60 min,7.161,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (2).MP4,27491,32.9223,60 min,0.6384,NEbowyer_1,Fiona Francis,21,,10/17/2019,9:45,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,4,No
+Left (4).MP4,16435,62.2427,60 min,41.1489,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,,,,,1,No
+Left (2).MP4,8707,22.5431,60 min,1.4492,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left (5).MP4,923,71.3174,60 min,50.2235,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,Hexagrammidae,Hexagrammos,stelleri,167113,1,No
+Left (3).MP4,2673,36.8885,60 min,15.7947,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,31142,52.7204,60 min,31.6266,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (2).MP4,25817,32.0581,60 min,10.9643,Nechristie_1,Fiona Francis,23,,10/1/2019,10:09,rocky reef,,,,1035,1034,Scorpaenidae,Sebastes,maliger,166726,3,No
+Left (2).MP4,16263,26.6783,60min,0.5706,northpamrocks_1,Fiona Francis,23.1,,9/12/2019,14:02,rocky reef,,,,1047,1046,Bathymasteridae,Ronquilus,jordani,170951,1,No
+Left (2).MP4,17703,27.4791,60min,1.3714,northpamrocks_1,Fiona Francis,23.1,,9/12/2019,14:02,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (4).MP4,14010,60.694,60min,34.5862,northpamrocks_1,Fiona Francis,23.1,,9/12/2019,14:02,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,24820,49.0712,60min,22.9635,northpamrocks_1,Fiona Francis,23.1,,9/12/2019,14:02,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,4,No
+Left (2).MP4,11743,24.1647,60 min,3.9239,northpamrocks_2,Fiona Francis,23.2,,11/4/2019,13:22,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,5,No
+Left (3).MP4,16363,44.3682,60 min,24.1274,northpamrocks_2,Fiona Francis,23.2,,11/4/2019,13:22,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,7,No
+Left (2).MP4,27771,33.078,60 min,12.8373,northpamrocks_2,Fiona Francis,23.2,,11/4/2019,13:22,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,30233,34.4472,60min,10.3147,Nwpassage_1,Fiona Francis,23.8,,10/10/2019,12:35,rocky reef,,,,1047,1046,Bathymasteridae,Ronquilus,jordani,170951,7,No
+Left (3).MP4,2172,36.4764,60min,12.344,Nwpassage_1,Fiona Francis,23.8,,10/10/2019,12:35,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (4).MP4,24663,66.6182,60min,42.4858,Nwpassage_1,Fiona Francis,23.8,,10/10/2019,12:35,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,25591,49.5,60min,25.3676,Nwpassage_1,Fiona Francis,23.8,,10/10/2019,12:35,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (4).MP4,27044,67.9423,60min,43.8099,Nwpassage_1,Fiona Francis,23.8,,10/10/2019,12:35,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,2,No
+Left (2).MP4,13267,25.0122,,,passagebioherm_1,Fiona Francis,28.8,,10/29/2019,10:59,sponge reef,,,,1049,1048,,,,,1,No
+Left (3).MP4,12868,42.4246,60min,10.1079,passagebioherm_1,Fiona Francis,28.8,,10/29/2019,10:59,sponge reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,2,No
+Left (4).MP4,1324,53.6391,60min,21.3224,passagebioherm_1,Fiona Francis,28.8,,10/29/2019,10:59,sponge reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,3,No
+Left (4).MP4,9380,58.1192,60min,25.8024,passagebioherm_1,Fiona Francis,28.8,,10/29/2019,10:59,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,16,No
+Left (3).MP4,9568,40.5894,60min,8.2727,passagebioherm_1,Fiona Francis,28.8,,10/29/2019,10:59,sponge reef,,,,1049,1048,Scorpaenidae,Sebastes,ruberrimus,166740,2,No
+Left (2).MP4,19621,28.5457,60 min,7.7995,passagebioherm_2,Fiona Francis,28.9,,11/12/2019,9:45,sponge reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (4).MP4,468,53.1631,60 min,32.4168,passagebioherm_2,Fiona Francis,28.9,,11/12/2019,9:45,sponge reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (2).MP4,12413,24.5373,60 min,3.791,passagebioherm_2,Fiona Francis,28.9,,11/12/2019,9:45,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,22,No
+Left (3).MP4,10623,41.1761,60 min,20.4299,passagebioherm_2,Fiona Francis,28.9,,11/12/2019,9:45,sponge reef,,,,1047,1046,Scorpaenidae,Sebastes,ruberrimus,166740,1,No
+Left (2).MP4,27082,32.6949,60min,9.9021,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,,,,,2,No
+Left (3).MP4,12092,41.9931,60min,19.2003,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,500,No
+Left (2).MP4,13096,24.9171,60min,2.1243,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Embiotocidae,Embiotoca,lateralis,169744,5,No
+Left (4).MP4,20173,64.1213,60min,41.3285,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,5,No
+Left (5).MP4,4023,72.7744,60min,49.9816,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (4).MP4,18718,63.3121,60min,40.5194,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,28070,50.8786,60min,28.0858,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (5).MP4,9523,75.833,60min,53.0402,porteaurockpile_1,Fiona Francis,21.3,,11/4/2019,10:26,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left (2).MP4,27291,32.8111,60min,2.6955,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,,,,,1,No
+Left (4).MP4,15872,61.7294,60min,31.6138,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,20,No
+Left (2).MP4,29284,33.9194,60min,3.8038,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,1,No
+Left (2).MP4,22674,30.2435,60min,0.1279,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (3).MP4,17542,45.0239,60min,14.9082,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (5).MP4,28479,86.3746,60min,56.259,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (2).MP4,27111,32.711,60min,2.5954,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,1,No
+Left (3).MP4,1462,36.0816,60min,5.966,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,6,No
+Left (3).MP4,14533,43.3505,60min,13.2349,porteauslide_1,Fiona Francis,20.4,,9/13/2019,10:30,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left (3).MP4,6512,38.89,60 min,24.5512,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Embiotocidae,Cymatogaster,aggregata,169739,500,No
+Left (1).MP4,26764,14.8838,60 min,0.545,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,15,No
+Left (4).MP4,16629,62.1504,60 min,47.8117,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,1,No
+Left (3).MP4,4910,37.9991,60 min,23.6603,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (2).MP4,5058,20.4471,60 min,6.1083,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,3,No
+Left (3).MP4,30051,51.9803,60 min,37.6415,porteauslide_2,Fiona Francis,22.2,,11/4/2019,11:15,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left (4).MP4,7984,57.3428,60min,29.4978,southpassage_1,Fiona Francis,23.7,,10/10/2019,11:11,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left (2).MP4,19665,28.5702,60min,0.7252,southpassage_1,Fiona Francis,23.7,,10/10/2019,11:11,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (3).MP4,5434,38.2905,60min,10.4454,southpassage_1,Fiona Francis,23.7,,10/10/2019,11:11,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,4676,37.8689,60min,10.0239,southpassage_1,Fiona Francis,23.7,,10/10/2019,11:11,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,12,No
+Left (2).MP4,21531,29.6079,60min,1.7629,southpassage_1,Fiona Francis,23.7,,10/10/2019,11:11,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,nigrocinctus,166732,1,No
+Left (3).MP4,4316,37.6687,60 min,19.1135,southpassage_2,Fiona Francis,22.2,,11/12/2019,11:01,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,5,No
+Left (4).MP4,21531,64.8765,60 min,46.3213,southpassage_2,Fiona Francis,22.2,,11/12/2019,11:01,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (3).MP4,15485,43.8799,60 min,25.3247,southpassage_2,Fiona Francis,22.2,,11/12/2019,11:01,rocky reef,,,,1049,1048,Phocidae,Phoca,vitulina,180649,1,No
+Left (2).MP4,6755,21.3908,60 min,2.8356,southpassage_2,Fiona Francis,22.2,,11/12/2019,11:01,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,7,No
+Left_002.MP4,18063,27.6793,,,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,,,,,1,No
+Left_005.MP4,13593,78.0964,60min,46.6538,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,5,No
+Left_004.MP4,25956,67.3373,60min,35.8947,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,7,No
+Left_003.MP4,5987,38.598,60min,7.1555,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left_004.MP4,2189,54.1202,60min,22.6777,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Hexagrammidae,Oxylebius,pictus,167118,1,No
+Left_005.MP4,14039,78.3444,60min,46.9019,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,1,No
+Left_002.MP4,28651,33.5674,60min,2.1249,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left_003.MP4,15113,43.6731,60min,12.2306,tennisboatramp_1,Fiona Francis,21.4,,9/6/2019,13:47,rocky reef,,,,1049,1048,Squalidae,Squalus,suckleyi,160617,1,No
+Left (3).MP4,27776,50.7151,60min,35.8469,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Bathymasteridae,Ronquilus,jordani,170951,2,No
+Left (4).MP4,21375,64.7897,60min,49.9215,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Embiotocidae,Cymatogaster,aggregata,169739,500,No
+Left (2).MP4,9749,23.0558,60min,8.1876,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Embiotocidae,Embiotoca,lateralis,169744,1,No
+Left (2).MP4,9927,23.1548,60min,8.2866,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,4,No
+Left (2).MP4,20044,28.781,60min,13.9128,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,4,No
+Left (1).MP4,29773,16.5571,60min,1.6889,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (4).MP4,2787,54.4527,60min,39.5845,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left (4).MP4,14732,61.0955,60min,46.2273,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Hexagrammidae,Oxylebius,pictus,167118,2,No
+Left (3).MP4,16591,44.495,60min,29.6268,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Phocidae,Phoca,vitulina,180649,1,No
+Left (3).MP4,31457,52.7622,60min,37.894,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,emphaeus,166718,1,No
+Left (1).MP4,28134,15.6456,60min,0.7774,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,3,No
+Left (1).MP4,31013,17.2467,60min,2.3785,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,7,No
+Left (2).MP4,570,17.9513,60min,3.0831,tennisboatramp_2,Fiona Francis,22.4,,11/5/2019,10:07,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,nigrocinctus,166732,1,No
+Left_003.MP4,30141,52.0303,60min,23.2193,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Embiotocidae,Rhacochilus,vacca,169754,4,No
+Left_002.MP4,21802,29.7586,60min,0.9476,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Gobiidae,Rhinogobiops,nicholsii,636877,3,No
+Left_003.MP4,10771,41.2584,60min,12.4474,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Hexagrammidae,Ophiodon,elongatus,167116,2,No
+Left_002.MP4,20098,28.811,60min,0,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,flavidus,166720,100,No
+Left_002.MP4,22234,29.9989,60min,1.1879,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Scorpaenidae,Sebastes,maliger,166726,1,No
+Left_002.MP4,24248,31.1189,60min,2.3079,tenniscourts_1,Fiona Francis,21.8,,9/5/2019,11:54,rocky reef,,,,1049,1048,Squalidae,Squalus,suckleyi,160617,1,No
+Left (5).MP4,2529,71.9435,60min,53.7787,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Embiotocidae,Rhacochilus,vacca,169754,14,No
+Left (2).MP4,2741,19.1586,60min,0.9938,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Gobiidae,Rhinogobiops,nicholsii,636877,2,No
+Left (4).MP4,29967,69.5678,60min,51.403,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Hexagrammidae,Hexagrammos,decagrammus,167110,1,No
+Left (2).MP4,15238,26.1083,60min,7.9435,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Hexagrammidae,Ophiodon,elongatus,167116,1,No
+Left (4).MP4,8749,57.7683,60min,39.6035,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Hexagrammidae,Oxylebius,pictus,167118,1,No
+Left (2).MP4,14301,25.5872,60min,7.4224,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Phocidae,Phoca,vitulina,180649,1,No
+Left (3).MP4,27594,50.6139,60min,32.4491,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,caurinus,166713,2,No
+Left (3).MP4,1026,35.8391,60min,17.6743,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,emphaeus,166718,2,No
+Left (2).MP4,4218,19.98,60min,1.8151,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,flavidus,166720,100,No
+Left (2).MP4,19141,28.2788,60min,10.114,tenniscourts_2,Fiona Francis,22.2,,11/5/2019,10:56,rocky reef,,,,1047,1046,Scorpaenidae,Sebastes,maliger,166726,3,No

@@ -1,0 +1,74 @@
+---
+title: "BRUVs preliminary analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+library(tidyverse)
+measurements <- read_csv("bruvs_fish_lengths.csv")
+surface <- read_csv("surface_measurement_comparison.csv")
+
+head(measurements)
+
+# make a dataframe of just fish lengths
+
+lengths <- measurements %>% drop_na(Species)
+
+head(lengths)
+
+# tidy up and check that lengths are correct
+
+lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(length.mm >500) %>% select(Genus,Species,length.mm, OpCode) %>% print(n=39)
+
+# clearly there are three rockfish that got mis-measured (three yellowtails probably becuase they are in schools and were far away) so we will remove them
+
+lengths <- lengths %>% filter(!(Genus == "Sebastes" & length.mm > 500))
+
+```
+
+
+```{r pressure, echo=FALSE}
+lengths %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Species == "caurinus") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = T) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(length.mm >500) %>% select(Genus,Species,length.mm, OpCode) %>% print(n=39)
+
+lengths %>% distinct(OpCode)
+
+```
+
+``` {r current, echo = F}
+
+measurements 
+
+current <- measurements %>% filter(is.na(Species))
+
+```
+
+``` {r surface, echo = F}
+
+surface
+
+mean.surface <-surface %>% group_by(site) %>% summarise(mean.ratio = mean(ratio))
+
+ggplot() + geom_point(data = mean.surface, aes(site, mean.ratio))
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
