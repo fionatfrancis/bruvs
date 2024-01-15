@@ -1,0 +1,11 @@
+! Any line beginning with a ‘!’ is ignored – like this one
+!
+! First data line is the information headers (OpCode, TapeReader, Depth, Comment must be labelled as such)
+OpCode <t> TapeReader <t> Depth <t> Comment <t> Date <t> Time <t> Left_camera <t> Right_camera <t> current_speed <t> complexity <t> temperature <t> Info12
+!
+! Subsequent data lines specify an .EMObs file: information field values, picture directory (optional), stereo camera files (optional)
+! Number of left movies in sequence (a), then a filenames L1, ..., La (optional)
+! Number of right movies in sequence (b), then b filenames R1, ..., Rb (optional)
+<t> Fiona <t> <t> <t> <t> <t> <t> <t> <t> <t> <t> <t>
+Op5 <t> <t> <t> <t> <t> <t> <t> <t> <t> <t> <t> <t>
+Op5 <t> <t> <t> <t> <t> <t> <t> <t> <t> <t> <t> <t>
