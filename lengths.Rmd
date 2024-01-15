@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 measurements <- read_csv("bruvs_fish_lengths.csv")
 surface <- read_csv("surface_measurement_comparison.csv")
-
+abundance <-read_csv("MaxN.csv")
 head(measurements)
 
 # make a dataframe of just fish lengths
@@ -36,7 +36,7 @@ lengths <- lengths %>% filter(!(Genus == "Sebastes" & length.mm > 500))
 
 
 ```{r pressure, echo=FALSE}
-lengths %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+lengths %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = T) +
   facet_wrap(~habitat_type)
 
 lengths %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
@@ -45,12 +45,30 @@ lengths %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(Number, l
 lengths %>% filter(Species == "caurinus") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
   facet_wrap(~habitat_type)
 
-lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = T) +
+lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), cex = 2, show.legend = T) +
   facet_wrap(~habitat_type)
 
 lengths %>% filter(length.mm >500) %>% select(Genus,Species,length.mm, OpCode) %>% print(n=39)
 
 lengths %>% distinct(OpCode)
+
+```
+
+Abundanace data
+
+# MAx N
+
+``` {r MaxN, echo = F}
+abundance
+
+
+abundance %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), show.legend = T)
+
+abundance %>% filter(Genus == "Sebastes") %>% filter(MaxN <100) %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), cex = 2, show.legend = T)
+
+abundance %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), alpha = 0.4, size = 3, show.legend = T)
+
+abundance %>% filter(Species == "caurinus") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), alpha = 0.4, size = 3, show.legend = T)
 
 ```
 
