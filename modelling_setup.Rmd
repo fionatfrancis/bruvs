@@ -1,0 +1,1142 @@
+---
+title: "FISH ABUNDANCE AND RICHNESS MODELS"
+output:
+  html_document: default
+  pdf_document: default
+date: "2023-03-06"
+---
+This is a file to set up the BRUVs data to run linear mixed effects models on fish abundance and lengths and to look at how these aspects of fish communities differ between sponge and rock reef habitats and also determine what are the main drivers that lead to these differences.
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(fishualize)
+library(nlme)
+library(lme4)
+library(bbmle)
+library(ggeffects)
+library(ggplot2)
+library(sjPlot)
+library(effects)
+library(cowplot)
+library(insight)
+library(stringr)
+
+
+```
+
+
+``` {r files, include = F}
+#Read in files
+measurements <- read_csv("bruvs_fish_lengths.csv")
+surface <- read_csv("surface_measurement_comparison.csv")
+abundance <-read_csv("MaxN.csv")
+meta <- read_csv("BRUV_sites_metadata_2019_updated.csv")
+refuge <- read_csv("ImageJ_3Dhabitatmeasurements.csv")
+head(measurements)
+head(surface) # this is already in the meta file, shouldn't need
+head(abundance)
+head(meta)
+head(refuge)
+```
+
+# Fish abundance
+
+Let's first look at fish abundance. This was measured using MaxN which is a common metric used in baited video studies and represented the maximum number of fish of a given species seen at one time in the frame over a 60 min time period. I would like to look at total number of non-schooling rockfish combined and then if there is enough data we could look at an individual species (like quillback rockfish). We could also look at the whole fish community (so including greenlings and gobies and yellowtail rockfish etc) if we think that this is well represented by BRUVs as a method?
+
+## Research Questions
+1. Does rockfish abundance differ between rocky reefs, sponge gardens and sponge reefs? (*Do we have enough data on sponge reefs? Should we add them to bioherms? rocky reefs? Hmmm question for discussion)
+
+2. What are the main drivers of rockfish abundance (this question can be answered regardless of if there was a difference in habitat type or not)? The metrics we have include max % cover of refuge (scale 1-5), max refuge size (scale 1-5), mean and SD of both of those metrics, depth, current (measured with flagging tape at time of deployment), complexity from SeaGIS analysis.
+
+3. Same questions but with overall demersal fish community, not just rockfish
+
+Let's make sure we have all the things we need in the metadata for the MaxN data including adding in the refuge measurements and depth and current.
+```{r, echo = F}
+
+#refuge %>% print(n = Inf)
+
+# plot refuge measures
+
+#site and rugosity
+refuge %>% ggplot() + geom_point(aes(Site,Rugosity, colour = Height), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("rugosity")
+
+#site and refuge size
+refuge %>% ggplot() + geom_point(aes(Site,`Refuge size categories`, colour = Height), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("ref size")
+
+#site and refuge cover
+refuge %>% ggplot() + geom_point(aes(Site,`Refuge cover`, colour = Height), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("ref size")
+
+#rugosity and refuge size
+refuge %>% ggplot() + geom_point(aes(Rugosity,`Refuge size categories`, colour = Height), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("rugosity") +
+  ylab("ref size")
+
+#ref cover and ref size
+refuge %>% ggplot() + geom_point(aes(`Refuge cover`,`Refuge size categories`, colour = Height), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("ref cover") +
+  ylab("ref size")
+
+```
+
+## A note on sponge gardens
+
+We only had 3 potential gardens. One we removed because it was a boot sponge wall and the other complication was that the sponges at hutt pair were sliced off before the last sampling period.So I need to change the % cover info for that site for the last sample.
+
+```{r, include= F}
+
+#summary stats for site level (including no sponge photos in the mean and sd)
+
+  
+summary.ref <-refuge %>% group_by(Site) %>% 
+  summarize(mean.site.rug = mean(Rugosity), max.rug = max(Rugosity), sd.site.rug = sd(Rugosity), mean.site.ref = mean(`Refuge size categories`), max.ref = max(`Refuge size categories`), sd.site.ref = sd(`Refuge size categories`), mean.site.cov = mean(`Refuge cover`), max.cov = max(`Refuge cover`), sd.site.cov = sd(`Refuge cover`))
+
+summary.ref <- summary.ref %>% rename(site = Site)
+
+summary.ref
+
+```
+
+
+``` {r, include = F}
+# need to join metadata with abundance
+
+meta 
+
+#truncate this to remove fish counts for now and remove duplicates
+
+metadata <-meta %>% select(-c(20,21,22,23,24,25,26,29,30,31))
+
+metadata <- metadata %>% distinct()
+
+metadata <- metadata %>% rename(OpCode = `op_code in eventmeasure`)
+
+# check that the OpCodes are the same
+
+metadata %>% distinct(OpCode) %>% print(n = Inf) 
+abundance %>% distinct(OpCode) %>% print(n = Inf)
+
+# of course they don't match properly (eye rollll) so need to rename a couple
+
+#Ansell point
+#northwestpassage
+
+metadata <- metadata %>%
+     mutate(OpCode = dplyr::recode(OpCode, Ansellpoint_1 = "ansellpoint_1",
+         northwestpassage_1 = "Nwpassage_1",
+         NEchristie_1 = "Nechristie_1"
+     ))
+
+
+# get rid of the empty complexity, current and temp column
+
+abundance <-abundance %>% select(-(13:15))
+
+
+#join with abundance
+
+maxn <- abundance %>% left_join(metadata, by= c("OpCode"))
+
+maxn %>% print(n = Inf)
+
+# fix the meta data for the last hutt pair sampling period
+
+hutt_3 <-refuge %>% filter(Site == "huttcloudpair") %>% mutate(Rugosity = c(5,1,1,1,5,1)) %>% mutate(Height = c(3,1,1,1,4,1)) %>% 
+  mutate(`Refuge size categories` = c(4,1,1,1,4,1)) %>% mutate(`Refuge cover` = c(1,1,1,1,1,1))
+
+sum_hutt_3 <-hutt_3 %>% group_by(Site) %>% 
+  summarize(mean.site.rug = mean(Rugosity), max.rug = max(Rugosity), sd.site.rug = sd(Rugosity), mean.site.ref = mean(`Refuge size categories`), max.ref = max(`Refuge size categories`), sd.site.ref = sd(`Refuge size categories`), mean.site.cov = mean(`Refuge cover`), max.cov = max(`Refuge cover`), sd.site.cov = sd(`Refuge cover`))
+
+
+# need to add zeros in for all the species. Borrow code from ROV work.
+
+# let's see how many unique species there are so that we can double check if it is add the right number in
+
+maxn %>% distinct(Code)# 26 species (including a blank which is often inverts etc)
+
+abundance %>% distinct(Species) %>% print(n = Inf)
+
+maxn <- maxn %>% complete(nesting(OpCode), nesting(Genus, Species, Code), fill = list(MaxN = 0)) %>% dplyr::group_by(OpCode) %>% 
+  fill(date, .direction = "downup") %>% fill(Depth, .direction = "downup") %>% fill(Date, .direction = "downup") %>% fill(site, .direction = "downup") %>% fill(`unique site number`, .direction = "downup") %>% fill(lat, .direction = "downup") %>% fill(lon, .direction = "downup") %>% fill(habitat_type, .direction = "downup") %>% fill(temperature, .direction = "downup") %>% fill(complexity1, .direction = "downup") %>% fill(complexity2, .direction = "downup") %>% fill(complexity3, .direction = "downup") %>% fill(current1.mpers, .direction = "downup") %>% fill(current2.mpers, .direction = "downup") %>% fill(current3.mpers, .direction = "downup") %>% dplyr::ungroup()
+
+maxn
+
+# need to add in refuge information for each site
+
+maxn %>% select(OpCode) %>% distinct(OpCode) %>% print(n = Inf)
+
+# make a new site column based on opcode without the visit number at end so that it matches refuge measures
+
+maxn <-maxn %>% mutate(site = substr(OpCode,1,nchar(OpCode)-2), site)
+
+maxn %>% distinct(site) %>% print(n = Inf)
+summary.ref %>% distinct(site) %>% print(n = Inf)
+
+#merge in refuge
+
+maxn <- maxn %>% left_join(summary.ref, by= c("site"))
+
+maxn
+
+
+# remove some columns and fill in missing ones
+
+final.maxn <- maxn %>% select(OpCode, Genus, Species, Code, Depth, Date, habitat_type, MaxN, site, `unique site number`, lat, lon, temperature, complexity1, complexity2, complexity3, current1.mpers, current2.mpers, current3.mpers, mean.site.rug, max.rug, sd.site.rug, mean.site.ref, max.ref, sd.site.ref, mean.site.cov, max.cov, sd.site.cov)
+
+# fix the lat and lon
+
+final.maxn %>% select(lat, lon)
+
+final.maxn <-final.maxn %>% mutate(lat = sub("\xb0", " ", lat)) %>%
+  mutate(lon = sub("\xb0", " ", lon)) %>% mutate(lon = sub("123", "-123", lon))
+
+
+final.maxn$lat <- measurements::conv_unit(final.maxn$lat, from = "deg_dec_min", to = "dec_deg")
+final.maxn$lon <- measurements::conv_unit(final.maxn$lon, from = "deg_dec_min", to = "dec_deg")
+
+final.maxn
+
+
+final.maxn <-final.maxn %>% mutate_at(c('lat', 'lon'), as.numeric)
+
+final.maxn
+
+# fix refuge for third hutt cloud pair site
+
+final.maxn <-final.maxn %>% mutate(mean.site.rug = case_when(OpCode == "huttcloudpair_3" ~"2.33", TRUE ~ as.character(mean.site.rug))) %>% mutate(sd.site.rug = case_when(OpCode == "huttcloudpair_3" ~"2.07", TRUE ~ as.character(sd.site.rug)))  %>% mutate(mean.site.ref = case_when(OpCode == "huttcloudpair_3" ~"2", TRUE ~ as.character(mean.site.ref))) %>% mutate(sd.site.ref = case_when(OpCode == "huttcloudpair_3" ~"1.55", TRUE ~ as.character(sd.site.ref))) %>% mutate(mean.site.cov = case_when(OpCode == "huttcloudpair_3" ~"1", TRUE ~ as.character(mean.site.cov))) %>% mutate(max.cov = case_when(OpCode == "huttcloudpair_3" ~"1", TRUE ~ as.character(max.cov))) %>% mutate(sd.site.cov = case_when(OpCode == "huttcloudpair_3" ~"0", TRUE ~ as.character(sd.site.cov)))
+
+
+# need to make those back into numbers
+# 
+final.maxn <-final.maxn %>% mutate_at(c('mean.site.rug', 'sd.site.rug',"mean.site.ref","sd.site.ref", "mean.site.cov", "max.cov", "sd.site.cov"), as.numeric)
+
+#just looking at rockfish
+
+# make sure that boot sponge is a rocky reef
+
+final.maxn %>% distinct(OpCode)
+
+
+final.maxn <- final.maxn %>% mutate(habitat_type = case_when(OpCode == "bootspongewall_1" ~ "rocky reef", 
+                                               TRUE ~ as.character (habitat_type)))
+
+# add in a sponge/no sponge column
+
+final.maxn <-final.maxn %>% mutate(sponge = case_when(habitat_type == "rocky reef" ~ "no sponge", habitat_type == "sponge garden" ~ "no sponge", habitat_type == "sponge reef" ~ "sponge"))
+
+# add in mean complexity and current columns
+
+final.maxn <- final.maxn %>% rowwise() %>% mutate(complex = mean(c_across(c("complexity1", "complexity2", "complexity3")), na.rm = TRUE))
+
+final.maxn <- final.maxn %>% rowwise() %>% mutate(current = mean(c_across(c("current1.mpers", "current2.mpers", "current3.mpers")), na.rm = TRUE))
+
+# fix complexity for boot sponge, those measurements are bonkers
+
+final.maxn <-final.maxn %>% mutate(complex = case_when(OpCode == "bootspongewall_1" ~ "1.205168466",
+                                               TRUE ~ as.character(complex))) %>% mutate_at("complex", as.numeric)
+
+# just pulling out rockfish
+rockfish.maxn <- final.maxn %>%  filter(grepl('Sebastes', Genus))
+```
+
+
+``` {r, include = F}
+maxn %>% ggplot() + geom_point(aes(Species, MaxN, alpha = 0.6), size = 5, show.legend = T) +
+    scale_color_fish_d(option = "Coris_gaimard", direction = -1) +  
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("species") +
+  ylab("number of fish observed")
+
+```
+
+## Plots of habitat variables
+```{r, echo= F}
+
+#mean ref
+summary.ref %>% ggplot() + geom_point(aes(site,mean.site.ref), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("mean ref size")
+#mean rug
+summary.ref %>% ggplot() + geom_point(aes(site,mean.site.rug), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("mean rugosity")
+#max rug
+summary.ref %>% ggplot() + geom_point(aes(site,max.rug), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("site") +
+  ylab("max rugosity")
+
+#mean site ref
+summary.ref %>% ggplot() + geom_point(aes(site,mean.site.ref), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+   geom_errorbar(aes(x = site, ymin=mean.site.ref-sd.site.ref, ymax=mean.site.ref+sd.site.ref), width=.2,
+                 position=position_dodge(.9)) +
+   geom_point(aes(site, max.ref), size = 4, colour = "purple") +
+  xlab("site") +
+  ylab("mean site refuge")
+
+#mean site rug
+summary.ref %>% ggplot() + geom_point(aes(site,mean.site.rug), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+   geom_errorbar(aes(x = site, ymin=mean.site.rug-sd.site.rug, ymax=mean.site.rug+sd.site.rug), width=.2,
+                 position=position_dodge(.9)) +
+  geom_point(aes(site, max.rug), size = 4, colour = "purple") +
+  xlab("site") +
+  ylab("mean site rugosity")
+
+#mean site cov
+summary.ref %>% ggplot() + geom_point(aes(site,mean.site.cov), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+   geom_errorbar(aes(x = site, ymin=mean.site.cov-sd.site.cov, ymax=mean.site.cov+sd.site.cov), width=.2,
+                 position=position_dodge(.9)) +
+  geom_point(aes(site, max.cov), size = 4, colour = "purple") +
+  xlab("site") +
+  ylab("mean ref cover")
+
+#max ref and max cov
+summary.ref %>% ggplot() + geom_point(aes(max.cov,max.ref), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("max cover") +
+  ylab("max refuge")
+
+#max ref and max cov
+summary.ref %>% ggplot() + geom_point(aes(max.rug,max.ref), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("max rugosity") +
+  ylab("max refuge")
+
+```
+
+## Non-schooling rockfish models (no yellowtail)
+
+Question 1. Does rockfish abundance differ between rocky reefs, sponge gardens and sponge reefs? (*Do we have enough data on sponge reefs? Should we add them to bioherms? rocky reefs? Hmmm question for discussion)
+
+Could we include richness as a factor if we cant use it as a predictor variable?
+
+```{r, include= F}
+#Mixed effects models for abundance. Using sdmTMB in case we want to include a spatial component. Also want to run this as a count model? since you can only have finite groups? But what about very large schools? Should look into the sdmTMB workshop again about this.
+
+library(glmmTMB)
+library(car)
+library(effects)
+require(DHARMa, quietly = TRUE)
+library(sf)
+library(sdmTMB)
+library(INLA)
+
+
+#add in lat and long to data
+rockfish <- rockfish.maxn %>% filter(!Species == "flavidus")
+
+get_crs(rockfish, c("lon", "lat")) #function from sdmTMB to check coordinates crs
+
+
+rockfish <- add_utm_columns(rockfish, c("lon", "lat")) # add in x and y columns in UTM
+
+
+rockfish %>% filter(site == "defenceinshorebioherm") %>% ggplot + geom_point(aes(Species, MaxN))
+# struggling to use sf to convert CRS so ignoring for now and using above code in sdmTMB
+
+#data_sf <- all %>% st_as_sf(coords = c("Lat", "Long"), crs =     "EPSG:4326") %>%
+ # st_transform(crs = "EPSG:3005") #convert degree min to UTM
+
+#data_sf %>% select(geometry)
+
+#all_data <- data_sf %>% st_drop_geometry()
+#XY <- as.data.frame(st_coordinates(data_sf))/1000 #to km not m
+#all_data$X <- XY$X
+#all_data$Y <- XY$Y
+#all_data$X_m <- XY$X*1000
+#all_data$Y_m <- XY$Y*1000
+
+```
+
+```{r, include = F}
+# need to make a mesh, required for sdmTMB because it is a spatial package, can turn off when running model though
+
+mesh <- make_mesh(data = rockfish, xy_cols = c("X", "Y"), cutoff = 2) #the cutoff is km
+
+plot(mesh)
+
+rockfish <- rockfish %>% mutate_if(is.character, as.factor)# if you don't turn site into a factor sdmTMB will explode and not run
+
+#summarized counts for all rockfish (no yellowtail)
+allrf <- rockfish %>% group_by(OpCode) %>% 
+  summarize(summaxn = sum(MaxN), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% select(-"Species") %>% ungroup()
+
+
+```
+
+```{r, echo = F}
+rockfish %>% filter(!MaxN == 0) %>% group_by(OpCode) %>% 
+  summarize(richness = n(), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% select(-"Species")
+    
+rockfish.richness <- rockfish %>% filter(!MaxN == 0) %>% group_by(OpCode) %>% 
+  summarize(richness = n())
+
+rf.richness <- allrf %>% left_join(rockfish.richness, by= c("OpCode")) %>% mutate(richness = coalesce(richness, 0))
+
+# just quillback
+quill <- rockfish %>% filter(Species == "maliger")
+
+# plots
+
+rockfish %>% ggplot() + geom_point(aes(Species, MaxN))
+
+rockfish %>% ggplot() + geom_point(aes(habitat_type, MaxN))
+
+quill %>% ggplot() + geom_point(aes(max.ref, MaxN))
+
+allrf %>% ggplot() + geom_point(aes(max.cov, summaxn, colour = OpCode)) +facet_wrap(~habitat_type)
+
+allrf %>% ggplot() + geom_point(aes(max.cov, max.ref))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, max.cov))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, max.ref))
+
+allrf %>% ggplot() + geom_point(aes(mean.site.cov, max.cov))
+
+allrf %>% ggplot() + geom_point(aes(sponge, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(complex, summaxn, colour = site)) + facet_wrap(~habitat_type)
+
+allrf %>% ggplot() + geom_point(aes(current, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, complex))
+
+
+```
+
+Simple comparison between a NULL model and one with habitat type
+
+```{r}
+
+# Simple comparison between a NULL model and one with habitat type
+
+null <- sdmTMB(formula = summaxn ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+hab1 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+#two habitat categories
+hab2 <- sdmTMB(formula = summaxn ~ 0 + sponge + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+AICtab(null, hab1)
+
+sanity(hab1)
+
+summary(hab1)
+
+hist(residuals(hab1)) 
+hist(residuals(hab1, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(hab1)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(hab1, "habitat_type")
+
+```
+
+## Discussion about what to do with sponge reefs? 
+
+
+```{r, echo = F}
+allrf %>% filter(site == "huttcloudpair") %>% select(1,20:28)
+
+```
+
+### For example, if we combine the sponge gardens with the rocky reefs...
+
+```{r, echo = F}
+visreg::visreg(hab2, "sponge")
+```
+
+### Question 2. What are the main drivers of rockfish abundance 
+
+This question can be answered regardless of if there was a difference in habitat type or not. The metrics we have include max % cover of refuge (scale 1-5), max refuge size (scale 1-5), mean and SD of both of those metrics, depth, current (measured with flagging tape at time of deployment), complexity from SeaGIS analysis.
+
+Okay shoot I completely forgot that larsen bay was missing complexity from the seaGIS measures and so I spent a while running this but I think because the n is lower it lowers the overall likihood because there were 40 measures with complexity not 43. Tested complexity on smaller dataset and now we are scrapping it
+``` {r, include = F}
+
+allrf
+
+#one variable
+m <- sdmTMB(data = allrf , formula = summaxn ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            control = sdmTMBcontrol(newton_loops = 3))
+
+m1 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m2 <- sdmTMB(formula = summaxn ~ 0 + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m3 <- sdmTMB(formula = summaxn ~ 0 + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m4 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m5 <- sdmTMB(formula = summaxn ~ 0 + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m6 <- sdmTMB(formula = summaxn ~ 0 + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m7 <- sdmTMB(formula = summaxn ~ 0 + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m8 <- sdmTMB(formula = summaxn ~ 0 + Depth + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m9 <- sdmTMB(formula = summaxn ~ 0 + current + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+#two variable
+m11 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m12 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m13 <- sdmTMB(formula = summaxn ~ 0 + sd.site.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m14 <- sdmTMB(formula = summaxn ~ 0 + max.cov + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m15 <- sdmTMB(formula = summaxn ~ 0 + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m16 <- sdmTMB(formula = summaxn ~ 0 + max.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m17 <- sdmTMB(formula = summaxn ~ 0 + max.cov + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m18 <- sdmTMB(formula = summaxn ~ 0 + max.ref + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m19 <- sdmTMB(formula = summaxn ~ 0 + max.ref + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m20 <- sdmTMB(formula = summaxn ~ 0 + max.ref + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+# three variable
+m21 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+m22 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m23 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.ref + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m24 <- sdmTMB(formula = summaxn ~ 0 + mean.site.ref + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+m25 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + max.cov + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+
+#m22 <- sdmTMB(formula = summaxn ~ 0 + sponge:max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+#m23 <- sdmTMB(formula = summaxn ~ 0 + sponge*max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+```
+
+### model with max cover and mean site cover is lowest AIC but it is not fitting super well. Not sure why. It is model 16. model 2 is the one with just max cover and it fits well but has a difference of 2.4.
+
+Also for model 16 the max cover and mean cover have opposite relationships....argh! Which maybe makes sense if the variability is super high? but then wouldn't the SD be important?
+
+```{r, echo = T}
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m8, m9)
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m8, m9, m11, m12, m13, m14, m15,m16, m17, m18,m19, m20, m21, m22, m23, m24, m25)
+
+tidy(m16, conf.int = TRUE)
+
+tidy(m21, conf.int = TRUE)
+
+
+sanity(m16) # a check from sdmTMB, not fitting well
+
+
+sanity(m2) # a check from sdmTMB for the model with just max.cov
+
+tidy(m16, conf.int = TRUE) 
+tidy(m2, conf.int = TRUE) 
+
+hist(residuals(m16)) # look  at residuals
+
+hist(residuals(m16, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(m16)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(m16, "max.cov")
+
+visreg::visreg(m16, "mean.site.cov")
+
+
+
+hist(residuals(m2)) # look  at residuals
+
+hist(residuals(m2, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(m2)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(m2, "max.cov")
+```
+
+### okay I vote we scrap complexity and go back to the original model set becuase then we have more data to use because we can include larsen bay see below dataset as test
+``` {r, include = F}
+
+no.lb <- allrf %>% filter(!OpCode %in% c("larsenbay_1", "larsenbay_2", "larsenbay_3")) %>% droplevels()
+
+mesh <- make_mesh(data = no.lb, xy_cols = c("X", "Y"), cutoff = 2) #the cutoff is km
+
+plot(mesh)
+
+#one variable
+m <- sdmTMB(data = no.lb , formula = summaxn ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            control = sdmTMBcontrol(newton_loops = 3))
+
+m1 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m2 <- sdmTMB(formula = summaxn ~ 0 + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m3 <- sdmTMB(formula = summaxn ~ 0 + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m4 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m5 <- sdmTMB(formula = summaxn ~ 0 + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m6 <- sdmTMB(formula = summaxn ~ 0 + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m7 <- sdmTMB(formula = summaxn ~ 0 + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m8 <- sdmTMB(formula = summaxn ~ 0 + Depth + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m9 <- sdmTMB(formula = summaxn ~ 0 + complex + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m10 <- sdmTMB(formula = summaxn ~ 0 + current + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+#two variable
+m11 <- sdmTMB(formula = summaxn ~ 0 + complex + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+m12 <- sdmTMB(formula = summaxn ~ 0 + complex + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = no.lb, control = sdmTMBcontrol(newton_loops = 3))
+
+#m13 <- sdmTMB(formula = summaxn ~ 0 + complex + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3)) not working
+
+m14 <- sdmTMB(formula = summaxn ~ 0 + complex + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m15 <- sdmTMB(formula = summaxn ~ 0 + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m16 <- sdmTMB(formula = summaxn ~ 0 + max.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m17 <- sdmTMB(formula = summaxn ~ 0 + max.cov + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m18 <- sdmTMB(formula = summaxn ~ 0 + max.ref + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m19 <- sdmTMB(formula = summaxn ~ 0 + max.ref + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+# three variable
+m20 <- sdmTMB(formula = summaxn ~ 0 + complex + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+# interaction
+m21 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + complex + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+m22 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + complex + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+#m22 <- sdmTMB(formula = summaxn ~ 0 + sponge:max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+#m23 <- sdmTMB(formula = summaxn ~ 0 + sponge*max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allrf, control = sdmTMBcontrol(newton_loops = 3))
+
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12)
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m14, m15,m16, m17, m18,m19, m20, m21, m22)
+
+tidy(m11, conf.int = TRUE)
+
+
+sanity(m12) # a check from sdmTMB
+
+tidy(m12, conf.int = TRUE)
+
+sanity(m12) # a check from sdmTMB
+
+hist(residuals(m12), rm.na = T) # look  at residuals
+
+hist(residuals(m12, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(m12)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(m12, "max.cov")
+
+```
+
+
+
+# Rockfish richness
+
+## Non-schooling rockfish models (no yellowtail)
+
+### Question 1. Does rockfish richness differ between rocky reefs, sponge gardens and sponge reefs? 
+(*Do we have enough data on sponge reefs? Should we add them to bioherms? rocky reefs? Hmmm question for discussion). Fitting a negbinom2 because count data and zeros but it is not currently converging....
+```{r, echo = F}
+
+rf.richness %>% ggplot() + geom_point(aes(max.cov, richness)) +facet_wrap(~habitat_type)
+
+rf.richness %>% ggplot() + geom_point(aes(habitat_type, richness))
+
+hist(rf.richness$richness, breaks = 15)
+
+```
+
+Not working....
+```{r}
+
+# Simple comparison between a NULL model and one with habitat type
+
+null.rich <- sdmTMB(formula = richness ~ 0 + (1|site), mesh = mesh, spatial = "off", family = nbinom2(link = "log"), 
+            data = rf.richness, control = sdmTMBcontrol(newton_loops = 3))
+
+rich1 <- sdmTMB(formula = richness ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = nbinom2(link = "log"), 
+                data = rf.richness, control = sdmTMBcontrol(newton_loops = 3))
+
+
+AICtab(null.rich, rich1)
+
+sanity(rich1)
+
+summary(rich1)
+
+hist(residuals(rich1)) 
+hist(residuals(rich1, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(rich1)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(rich1, "habitat_type")
+
+
+```
+
+# Lengths
+
+Do we want to keep it as length? This would allow us to use individual fish but we have no rockfish at two sites (boot sponge wall, field of 1000)
+Or do we convert to biomass so that we have one measure at each site (then we could have a zero for the two sites with no fish)
+
+```{r, echo = F}
+measurements
+
+# make just rockfish
+# just pulling out rockfish
+rf.lengths <- measurements %>%  filter(grepl('Sebastes', Genus))
+
+# remove yellowtail
+rf.lengths <- rf.lengths %>% filter(!Species == "flavidus")
+
+
+# make a new site column based on opcode without the visit number at end so that it matches refuge measures
+
+rf.lengths <-rf.lengths %>% mutate(site = substr(OpCode,1,nchar(OpCode)-2), site)
+
+rf.lengths %>% distinct(site) %>% print(n = Inf)
+summary.ref %>% distinct(site) %>% print(n = Inf)
+
+#merge in refuge
+
+rf.lengths <- rf.lengths %>% left_join(summary.ref, by= c("site"))
+
+rf.lengths
+
+# add in refuge and coordinates
+
+lat_lon <-final.maxn %>% select(site, lat, lon) %>% distinct(site, .keep_all = T)
+rf.lengths <- rf.lengths %>% left_join(lat_lon, by= c("site"))
+
+# plot lengths and refuge
+rf.lengths %>% ggplot() + geom_point(aes(habitat_type, length.mm))
+
+hist(rf.lengths$length.mm, breaks = 30) #bimodal
+```
+
+```{r, include = F}
+
+#compare habitat and lengths
+
+get_crs(rf.lengths, c("lon", "lat")) #function from sdmTMB to check coordinates crs
+
+rf.lengths <- rf.lengths %>% mutate_if(is.character, as.factor)
+
+rf.lengths <- add_utm_columns(rf.lengths, c("lon", "lat")) # add in x and y columns in UTM
+
+mesh <- make_mesh(data = rf.lengths, xy_cols = c("X", "Y"), cutoff = 2) #the cutoff is km
+
+plot(mesh)
+```
+
+
+```{r}
+
+
+null.length <- sdmTMB(formula = length.mm ~ 0 + (1|site), mesh = mesh, spatial = "off", family = gaussian(link = "identity"), 
+            data = rf.lengths, control = sdmTMBcontrol(newton_loops = 3))
+
+length.hab <- sdmTMB(formula = length.mm ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = gaussian(link = "identity"), 
+            data = rf.lengths, control = sdmTMBcontrol(newton_loops = 3))
+
+
+AICtab(null.length, length.hab)
+
+sanity(length.hab)
+summary(length.hab)
+
+hist(residuals(length.hab)) 
+hist(residuals(length.hab, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(length.hab)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(length.hab, "habitat_type")
+
+```
+
+
+
+
+# ALL DEMERSAL FISH ABUNDANCE
+
+Do we want to look at all fish? Just rockfish, lingcod and greenlings? What about sharks? I could see there being a negative relationship with shark and other fish? Let's make some plots and see
+
+```{r, echo = F}
+
+# just demersal fish
+final.maxn %>% distinct(Genus) %>% print(n= Inf)
+
+final.maxn %>% filter(Genus %in% c("Ophiodon", "Squalus")) %>% ggplot() + geom_point(aes(MaxN, OpCode, colour = Genus))
+
+final.maxn %>% filter(Genus == "Ophiodon") %>% ggplot() + geom_point(aes(MaxN, OpCode))
+
+
+demersal <- final.maxn %>%  filter(Genus %in% c("Sebastes", "Hexagrammos", "Ophiodon", "Oxylebius"))
+
+alldemersal <-final.maxn %>%  filter(Genus %in% c("Sebastes", "Hexagrammos", "Ophiodon", "Oxylebius", "Rhinogobiops", "Ronquilus"))
+
+#summarized counts for rockfish, lingcod and greenling (no gobies and ronqiuls)
+allfish <- demersal %>% drop_na(Species) %>% filter(!Species == "flavidus") %>% group_by(OpCode) %>% 
+  summarize(summaxn = sum(MaxN), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% select(-c("Genus", "Species")) %>% ungroup()
+
+
+```
+
+```{r}
+
+#max cover
+allfish %>% ggplot() + geom_point(aes(max.cov, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(max.cov, summaxn))
+
+#mean site cover
+allfish %>% ggplot() + geom_point(aes(mean.site.cov, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(mean.site.cov, summaxn))
+
+#sd site cover
+
+allfish %>% ggplot() + geom_point(aes(sd.site.cov, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(sd.site.cov, summaxn))
+
+
+
+
+allfish %>% ggplot() + geom_point(aes(max.cov, max.ref))
+
+allfish %>% ggplot() + geom_point(aes(habitat_type, summaxn))
+
+allfish %>% ggplot() + geom_point(aes(habitat_type, max.cov))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, max.ref))
+
+allrf %>% ggplot() + geom_point(aes(mean.site.cov, max.cov))
+
+allrf %>% ggplot() + geom_point(aes(sponge, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(habitat_type, summaxn))
+
+allrf %>% ggplot() + geom_point(aes(complex, summaxn, colour = site)) + facet_wrap(~habitat_type)
+
+allrf %>% ggplot() + geom_point(aes(current, summaxn))
+
+hist(allfish$summaxn, breaks = 20)
+
+hist(allrf$summaxn, breaks = 20)
+
+```
+
+
+Simple comparison between a NULL model and one with habitat type for all demersal fish
+
+```{r}
+
+
+get_crs(allfish, c("lon", "lat")) #function from sdmTMB to check coordinates crs
+
+
+allfish <- add_utm_columns(allfish, c("lon", "lat")) # add in x and y columns in UTM
+
+mesh <- make_mesh(data = allfish, xy_cols = c("X", "Y"), cutoff = 2) #the cutoff is km
+
+plot(mesh)
+
+allfish <- allfish %>% mutate_if(is.character, as.factor)# i
+
+# Simple comparison between a NULL model and one with habitat type
+
+null <- sdmTMB(formula = summaxn ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+hab1 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+AICtab(null, hab1)
+
+sanity(hab1)
+
+summary(hab1)
+
+hist(residuals(hab1)) 
+hist(residuals(hab1, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(hab1)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+visreg::visreg(hab1, "habitat_type")
+
+```
+
+
+### Question 2. What are the main drivers of demersal fish abundance 
+
+This question can be answered regardless of if there was a difference in habitat type or not. The metrics we have include max % cover of refuge (scale 1-5), max refuge size (scale 1-5), mean and SD of both of those metrics, depth, current (measured with flagging tape at time of deployment), complexity from SeaGIS analysis.
+
+``` {r, include = F}
+
+#one variable
+m <- sdmTMB(data = allfish , formula = summaxn ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            control = sdmTMBcontrol(newton_loops = 3))
+
+m1 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m2 <- sdmTMB(formula = summaxn ~ 0 + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m3 <- sdmTMB(formula = summaxn ~ 0 + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m4 <- sdmTMB(formula = summaxn ~  0 + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 1)) #slow, but converges
+
+m5 <- sdmTMB(formula = summaxn ~ 0 + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #not converging
+
+m6 <- sdmTMB(formula = summaxn ~ 0 + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #not converging
+
+#m7 <- sdmTMB(formula = summaxn ~ 0 + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #always causes R to crash!!
+
+m8 <- sdmTMB(formula = summaxn ~ 0 + Depth + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #slow but converges
+
+m9 <- sdmTMB(formula = summaxn ~ 0 + current + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #doesn't converge
+
+#two variable
+m11 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m12 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m13 <- sdmTMB(formula = summaxn ~ 0 + sd.site.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m14 <- sdmTMB(formula = summaxn ~ 0 + max.cov + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m15 <- sdmTMB(formula = summaxn ~ 0 + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m16 <- sdmTMB(formula = summaxn ~ 0 + max.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #doesn't converge
+
+m17 <- sdmTMB(formula = summaxn ~ 0 + max.cov + sd.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #nope
+
+m18 <- sdmTMB(formula = summaxn ~ 0 + max.ref + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #doesn't converge
+
+m19 <- sdmTMB(formula = summaxn ~ 0 + max.ref + sd.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m20 <- sdmTMB(formula = summaxn ~ 0 + max.ref + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+# three variable
+m21 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #not converging
+
+
+m22 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.cov + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #nope
+
+m23 <- sdmTMB(formula = summaxn ~ 0 + habitat_type + max.ref + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3))
+
+m24 <- sdmTMB(formula = summaxn ~ 0 + mean.site.ref + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #nope
+
+
+m25 <- sdmTMB(formula = summaxn ~ 0 + mean.site.cov + max.cov + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = allfish, control = sdmTMBcontrol(newton_loops = 3)) #nope
+
+AICtab(m, m1, m2, m3, m4, m8, m11, m12, m13, m14, m15, m19, m20, m23)
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m8, m9, m11, m12, m13, m14, m15,m16, m17, m18,m19, m20, m21, m22, m23, m24, m25)
+
+tidy(m16, conf.int = TRUE)
+
+tidy(m21, conf.int = TRUE)
+
+
+sanity(m2) # a check from sdmTMB, not fitting well
+summary(m2)
+
+sanity(m12)
+summary(m12)
+
+sanity(m23)
+summary(m23)
+
+```
+
+
+
+# OTHER RANDOM STUFF
+
+```{r, include = F}
+#### quillback only #####
+#### 
+m <- sdmTMB(formula = MaxN ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), 
+            data = quill, control = sdmTMBcontrol(newton_loops = 3))
+
+m1 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = quill, control = sdmTMBcontrol(newton_loops = 3))
+m2 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = quill)
+m3 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = quill)
+
+
+###### testing with main factors to just see if it'll fit at all, k wait this makes no sense you need to sum rockfish not have them as individual points #######
+###### 
+m <- sdmTMB(formula = MaxN ~ 0 + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+m1 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+m2 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + max.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+m3 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+
+m4 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+m5 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+m4 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + mean.site.cov + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+m5 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + mean.site.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+m6 <- sdmTMB(formula = MaxN ~ habitat_type + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+m7 <- sdmTMB(formula = MaxN ~ 0 + max.cov + max.ref + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+m10 <- sdmTMB(formula = MaxN ~ 0 + habitat_type + max.cov + Species + (1|site), mesh = mesh, spatial = "off", family = tweedie(link = "log"), data = rockfish)
+
+tidy(m1, conf.int = TRUE)
+
+
+sanity(m2) # a check from sdmTMB
+
+summary(m2)
+tidy(m2, conf.int = TRUE)
+
+
+sanity(m7) # a check from sdmTMB
+
+hist(residuals(m2)) # look  at residuals
+
+hist(residuals(m2, type = "mle-mcmc")) # another way to calculate them using mcmc, got from Philina's mesh building vignette
+
+qqnorm(residuals(m2)) # qqnorm plot
+abline(a = 0, b = 1) # add 1:1 line
+
+AICtab(m, m1, m2, m3, m4, m5, m6, m7, m10)
+
+
+
+#nd <-c(MaxN =seq(1,20), length.out = 100) # P Thompson suggested predicting at one level of habitat type to see, I don't fully understand this
+#pred <-predict(m2, newdata = nd, habitat_type = "rocky reef", max.cov = 5)
+
+#pred %>% print(n = Inf)
+
+
+# need to add in diver count data as well (with zeros for onesnot counted). Need to figure out how to incorporate ones seen off transect?
+
+```
+
+
+``` {r, include = F}
+#Compare diver counts to Max N
+# plot numbers seen on MaxN and divers for each species
+
+# how do we want to deal with this data? This is more in the what is the utility of a BRUV vs scuba?
+```
+# HUTT SPONGE PAIR
+``` {r, include = F}
+final.maxn %>% filter(site == "huttcloudpair") %>% select(1,20:28)
+
+final.maxn %>% filter(site == "huttcloudpair") %>% filter(!Species == "aggregata") %>% filter(!MaxN == 0) %>% ggplot() + geom_point(aes(OpCode,MaxN, colour = Species), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("date") +
+  ylab("MaxN")
+
+rockfish.maxn %>% filter(site == "huttcloudpair") %>% print(n = Inf)
+
+rockfish.maxn %>% filter(site == "huttcloudpair") %>% filter(!MaxN == 0) %>% ggplot() + geom_jitter(aes(OpCode,MaxN, colour = Species, width = 0, height=0.1), size = 5, show.legend = T) +
+  theme(axis.text.x = element_text(angle = 90)) +           
+  xlab("date") +
+  ylab("MaxN")
+
+rockfish.maxn %>% filter(site == "huttcloudpair") %>% filter(!MaxN == 0) %>% ggplot() + geom_histogram(aes(Species, colour = Species), size = 5, show.legend = T) +
+  facet_wrap(~OpCode) +
+  theme(axis.text.x = element_text(angle = 90)) +
+  xlab("date") +
+  ylab("MaxN")
+
+alldemersal %>% filter(site == "huttcloudpair") %>% filter(!MaxN == 0) %>% ggplot() + geom_jitter(aes(OpCode,MaxN, colour = Species), size = 5, show.legend = T)
+
+# remove yellowtail rockfish for now
+genus_count <- alldemersal %>% filter(!Species == "flavidus") %>% drop_na(Species) %>% group_by(OpCode, Genus) %>% 
+  summarize(summaxn = sum(MaxN), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% ungroup()
+
+
+fish <- genus_count %>% mutate(fish_group = case_when(Genus == "Sebastes" ~"rockfish", Genus == "Ophiodon" ~"greenling", Genus == "Oxylebius" ~"greenling", Genus == "Hexagrammos" ~"greenling", Genus == "Ronquilus" ~"goby", Genus == "Rhinogobiops" ~"goby"))
+
+fish %>% filter(site == "huttcloudpair") %>% ggplot() + geom_jitter(aes(OpCode,MaxN, colour = Species), width = 0.05, height = 0.1, size = 5, show.legend = T)
+
+hutt_fish <- fish %>% filter(site == "huttcloudpair") %>% group_by(OpCode, fish_group) %>% 
+  summarize(summaxn = sum(summaxn), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% ungroup()
+
+hutt_fish %>% ggplot() + geom_jitter(aes(Date,summaxn, colour = fish_group), width = 0.05, height = 0.1, size = 5, show.legend = T) +
+  scale_x_discrete(limits=rev) +
+  geom_vline(xintercept = 2.5, linetype =2)
+
+#not removing yellowtail
+genus_count <- alldemersal %>% drop_na(Species) %>% group_by(OpCode, Genus) %>% 
+  summarize(summaxn = sum(MaxN), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% ungroup()
+
+
+fish <- genus_count %>% mutate(fish_group = case_when(Genus == "Sebastes" ~"rockfish", Genus == "Ophiodon" ~"greenling", Genus == "Oxylebius" ~"greenling", Genus == "Hexagrammos" ~"greenling", Genus == "Ronquilus" ~"goby", Genus == "Rhinogobiops" ~"goby"))
+
+fish %>% filter(site == "huttcloudpair") %>% ggplot() + geom_jitter(aes(OpCode,MaxN, colour = Species), width = 0.05, height = 0.1, size = 5, show.legend = T)
+
+hutt_fish <- fish %>% filter(site == "huttcloudpair") %>% group_by(OpCode, fish_group) %>% 
+  summarize(summaxn = sum(summaxn), across()) %>% distinct(OpCode, .keep_all=TRUE) %>% ungroup()
+
+hutt_fish %>% ggplot() + geom_jitter(aes(Date,summaxn, colour = fish_group), width = 0.05, height = 0.1, size = 5, show.legend = T) +
+  scale_x_discrete(limits=rev) +
+  geom_vline(xintercept = 2.5, linetype =2)
+
+# lengths
+
+rf.lengths %>% filter(site == "huttcloudpair") %>% select(Species,length.mm) %>% print(n = Inf)
+
+rf.lengths %>% filter(site == "huttcloudpair") %>% ggplot() + geom_point(aes(Date, length.mm, colour = Species))
+
+```

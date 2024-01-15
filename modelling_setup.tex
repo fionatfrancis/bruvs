@@ -1,0 +1,1397 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={FISH ABUNDANCE AND RICHNESS MODELS},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{FISH ABUNDANCE AND RICHNESS MODELS}
+\author{}
+\date{\vspace{-2.5em}2023-03-06}
+
+\begin{document}
+\maketitle
+
+This is a file to set up the BRUVs data to run linear mixed effects
+models on fish abundance and lengths and to look at how these aspects of
+fish communities differ between sponge and rock reef habitats and also
+determine what are the main drivers that lead to these differences.
+
+\hypertarget{fish-abundance}{%
+\section{Fish abundance}\label{fish-abundance}}
+
+Let's first look at fish abundance. This was measured using MaxN which
+is a common metric used in baited video studies and represented the
+maximum number of fish of a given species seen at one time in the frame
+over a 60 min time period. I would like to look at total number of
+non-schooling rockfish combined and then if there is enough data we
+could look at an individual species (like quillback rockfish). We could
+also look at the whole fish community (so including greenlings and
+gobies and yellowtail rockfish etc) if we think that this is well
+represented by BRUVs as a method?
+
+\hypertarget{research-questions}{%
+\subsection{Research Questions}\label{research-questions}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Does rockfish abundance differ between rocky reefs, sponge gardens and
+  sponge reefs? (*Do we have enough data on sponge reefs? Should we add
+  them to bioherms? rocky reefs? Hmmm question for discussion)
+\item
+  What are the main drivers of rockfish abundance (this question can be
+  answered regardless of if there was a difference in habitat type or
+  not)? The metrics we have include max \% cover of refuge (scale 1-5),
+  max refuge size (scale 1-5), mean and SD of both of those metrics,
+  depth, current (measured with flagging tape at time of deployment),
+  complexity from SeaGIS analysis.
+\item
+  Same questions but with overall fish community, not just rockfish
+\end{enumerate}
+
+Let's make sure we have all the things we need in the metadata for the
+MaxN data including adding in the refuge measurements and depth and
+current.
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-1-1.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-1-2.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-1-3.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-1-4.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-1-5.pdf}
+
+\hypertarget{a-note-on-sponge-gardens}{%
+\subsection{A note on sponge gardens}\label{a-note-on-sponge-gardens}}
+
+We only had 3 potential gardens. One we removed because it was a boot
+sponge wall and the other complication was that the sponges at hutt pair
+were sliced off before the last sampling period.So I need to change the
+\% cover info for that site for the last sample.
+
+\hypertarget{plots-of-habitat-variables}{%
+\subsection{Plots of habitat
+variables}\label{plots-of-habitat-variables}}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-2.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-3.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-4.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-5.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-6.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-7.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-5-8.pdf}
+
+\hypertarget{non-schooling-rockfish-models-no-yellowtail}{%
+\subsection{Non-schooling rockfish models (no
+yellowtail)}\label{non-schooling-rockfish-models-no-yellowtail}}
+
+Question 1. Does rockfish abundance differ between rocky reefs, sponge
+gardens and sponge reefs? (*Do we have enough data on sponge reefs?
+Should we add them to bioherms? rocky reefs? Hmmm question for
+discussion)
+
+Could we include richness as a factor if we cant use it as a predictor
+variable?
+
+\begin{verbatim}
+## `summarise()` has grouped output by 'OpCode'. You can override using the
+## `.groups` argument.
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 37 x 33
+## # Groups:   OpCode [37]
+##    OpCode     richn~1 Genus   Code Depth Date  habit~2  MaxN site  uniqu~3   lat
+##    <fct>        <int> <fct>  <dbl> <dbl> <fct> <fct>   <dbl> <fct>   <dbl> <dbl>
+##  1 birdislet~       1 Seba~ 166726  21.8 9/6/~ rocky ~     2 bird~       4  49.4
+##  2 birdislet~       1 Seba~ 166726  26.8 11/2~ rocky ~     2 bird~       4  49.4
+##  3 christieb~       2 Seba~ 166726  20   10/1~ rocky ~     2 chri~      13  49.5
+##  4 cliffcove~       3 Seba~ 166713  26.8 11/1~ rocky ~     1 clif~      25  49.4
+##  5 defencein~       2 Seba~ 166713  23.1 9/12~ sponge~     1 defe~       8  49.6
+##  6 defencein~       1 Seba~ 166726  25.3 10/3~ sponge~     7 defe~       8  49.6
+##  7 defencein~       2 Seba~ 166713  25.2 11/1~ sponge~     1 defe~       8  49.6
+##  8 defenceof~       1 Seba~ 166726  28.6 10/3~ sponge~     5 defe~      23  49.6
+##  9 defenceof~       1 Seba~ 166726  28.7 11/1~ sponge~     5 defe~      23  49.6
+## 10 defenceso~       2 Seba~ 166713  23.4 9/12~ rocky ~     2 defe~       9  49.6
+## # ... with 27 more rows, 22 more variables: lon <dbl>, temperature <dbl>,
+## #   complexity1 <dbl>, complexity2 <dbl>, complexity3 <dbl>,
+## #   current1.mpers <dbl>, current2.mpers <dbl>, current3.mpers <dbl>,
+## #   mean.site.rug <dbl>, max.rug <dbl>, sd.site.rug <dbl>, mean.site.ref <dbl>,
+## #   max.ref <dbl>, sd.site.ref <dbl>, mean.site.cov <dbl>, max.cov <dbl>,
+## #   sd.site.cov <dbl>, sponge <fct>, complex <dbl>, current <dbl>, X <dbl>,
+## #   Y <dbl>, and abbreviated variable names 1: richness, 2: habitat_type, ...
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-1.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-2.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-3.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-4.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-5.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-6.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-7.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-8.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-9.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-10.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-11.pdf}
+
+\begin{verbatim}
+## Warning: Removed 3 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-12.pdf}
+
+\begin{verbatim}
+## Warning: Removed 6 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-13.pdf}
+
+\begin{verbatim}
+## Warning: Removed 3 rows containing missing values (`geom_point()`).
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-8-14.pdf}
+
+Simple comparison between a NULL model and one with habitat type
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Simple comparison between a NULL model and one with habitat type}
+
+\NormalTok{null }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ summaxn }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{tweedie}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }
+            \AttributeTok{data =}\NormalTok{ allrf, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+\NormalTok{hab1 }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ summaxn }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ habitat\_type }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{tweedie}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }\AttributeTok{data =}\NormalTok{ allrf, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+\CommentTok{\#two habitat categories}
+\NormalTok{hab2 }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ summaxn }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ sponge }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{tweedie}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }\AttributeTok{data =}\NormalTok{ allrf, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+\FunctionTok{AICtab}\NormalTok{(null, hab1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      dAIC df
+## hab1  0.0 6 
+## null 24.8 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sanity}\NormalTok{(hab1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## v Non-linear minimizer suggests successful convergence
+\end{verbatim}
+
+\begin{verbatim}
+## v Hessian matrix is positive definite
+\end{verbatim}
+
+\begin{verbatim}
+## v No extreme or very small eigenvalues detected
+\end{verbatim}
+
+\begin{verbatim}
+## v No gradients with respect to fixed effects are >= 0.001
+\end{verbatim}
+
+\begin{verbatim}
+## v No fixed-effect standard errors are NA
+\end{verbatim}
+
+\begin{verbatim}
+## v No standard errors look unreasonably large
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are < 0.01
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are > 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(hab1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Model fit by ML ['sdmTMB']
+## Formula: summaxn ~ 0 + habitat_type + (1 | site)
+## Mesh: mesh
+## Data: allrf
+## Family: tweedie(link = 'log')
+##  
+##                           coef.est coef.se
+## habitat_typerocky reef        1.36    0.19
+## habitat_typesponge reef       2.27    0.31
+## habitat_typesponge garden     1.16    0.51
+## 
+## Random intercepts:
+##      Std. Dev.
+## site      0.49
+## 
+## Dispersion parameter: 1.85
+## Tweedie p: 1.12
+## ML criterion at convergence: 112.078
+## 
+## See ?tidy.sdmTMB to extract these values as a data frame.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(hab1)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(hab1, }\AttributeTok{type =} \StringTok{"mle{-}mcmc"}\NormalTok{)) }\CommentTok{\# another way to calculate them using mcmc, got from Philina\textquotesingle{}s mesh building vignette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## SAMPLING FOR MODEL 'tmb_generic' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:   1 / 500 [  0%]  (Warmup)
+## Chain 1: Iteration:  50 / 500 [ 10%]  (Warmup)
+## Chain 1: Iteration: 100 / 500 [ 20%]  (Warmup)
+## Chain 1: Iteration: 150 / 500 [ 30%]  (Warmup)
+## Chain 1: Iteration: 200 / 500 [ 40%]  (Warmup)
+## Chain 1: Iteration: 250 / 500 [ 50%]  (Warmup)
+## Chain 1: Iteration: 251 / 500 [ 50%]  (Sampling)
+## Chain 1: Iteration: 300 / 500 [ 60%]  (Sampling)
+## Chain 1: Iteration: 350 / 500 [ 70%]  (Sampling)
+## Chain 1: Iteration: 400 / 500 [ 80%]  (Sampling)
+## Chain 1: Iteration: 450 / 500 [ 90%]  (Sampling)
+## Chain 1: Iteration: 500 / 500 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.039 seconds (Warm-up)
+## Chain 1:                0.038 seconds (Sampling)
+## Chain 1:                0.077 seconds (Total)
+## Chain 1:
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: The largest R-hat is 1.06, indicating chains have not mixed.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#r-hat
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#bulk-ess
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#tail-ess
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-9-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(hab1)) }\CommentTok{\# qqnorm plot}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =} \DecValTok{0}\NormalTok{, }\AttributeTok{b =} \DecValTok{1}\NormalTok{) }\CommentTok{\# add 1:1 line}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-9-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visreg}\SpecialCharTok{::}\FunctionTok{visreg}\NormalTok{(hab1, }\StringTok{"habitat\_type"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-9-4.pdf}
+
+\hypertarget{discussion-about-what-to-do-with-sponge-reefs}{%
+\subsection{Discussion about what to do with sponge
+reefs?}\label{discussion-about-what-to-do-with-sponge-reefs}}
+
+\begin{verbatim}
+## # A tibble: 3 x 10
+##   OpCode mean.~1 max.rug sd.si~2 mean.~3 max.ref sd.si~4 mean.~5 max.cov sd.si~6
+##   <fct>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+## 1 huttc~    3.67       5    2.07    3.17       5    1.72     1.5       4    1.22
+## 2 huttc~    3.67       5    2.07    3.17       5    1.72     1.5       4    1.22
+## 3 huttc~    2.33       5    2.07    2          5    1.55     1         1    0   
+## # ... with abbreviated variable names 1: mean.site.rug, 2: sd.site.rug,
+## #   3: mean.site.ref, 4: sd.site.ref, 5: mean.site.cov, 6: sd.site.cov
+\end{verbatim}
+
+\hypertarget{for-example-if-we-combine-the-sponge-gardens-with-the-rocky-reefs}{%
+\subsubsection{For example, if we combine the sponge gardens with the
+rocky
+reefs\ldots{}}\label{for-example-if-we-combine-the-sponge-gardens-with-the-rocky-reefs}}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\hypertarget{question-2.-what-are-the-main-drivers-of-rockfish-abundance}{%
+\subsubsection{Question 2. What are the main drivers of rockfish
+abundance}\label{question-2.-what-are-the-main-drivers-of-rockfish-abundance}}
+
+This question can be answered regardless of if there was a difference in
+habitat type or not. The metrics we have include max \% cover of refuge
+(scale 1-5), max refuge size (scale 1-5), mean and SD of both of those
+metrics, depth, current (measured with flagging tape at time of
+deployment), complexity from SeaGIS analysis.
+
+Okay shoot I completely forgot that larsen bay was missing complexity
+from the seaGIS measures and so I spent a while running this but I think
+because the n is lower it lowers the overall likihood because there were
+40 measures with complexity not 43. Tested complexity on smaller dataset
+and now we are scrapping it
+
+\hypertarget{model-with-max-cover-and-mean-site-cover-is-lowest-aic-but-it-is-not-fitting-super-well.-not-sure-why.-it-is-model-16.-model-2-is-the-one-with-just-max-cover-and-it-fits-well-but-has-a-difference-of-2.4.}{%
+\subsubsection{model with max cover and mean site cover is lowest AIC
+but it is not fitting super well. Not sure why. It is model 16. model 2
+is the one with just max cover and it fits well but has a difference of
+2.4.}\label{model-with-max-cover-and-mean-site-cover-is-lowest-aic-but-it-is-not-fitting-super-well.-not-sure-why.-it-is-model-16.-model-2-is-the-one-with-just-max-cover-and-it-fits-well-but-has-a-difference-of-2.4.}}
+
+Also for model 16 the max cover and mean cover have opposite
+relationships\ldots.argh! Which maybe makes sense if the variability is
+super high? but then wouldn't the SD be important?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{AICtab}\NormalTok{(m, m1, m2, m3, m4, m5, m6, m7, m8, m9)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    dAIC df
+## m2  0.0 4 
+## m9  0.8 4 
+## m5  4.2 4 
+## m3  7.9 4 
+## m8 10.3 4 
+## m6 12.0 4 
+## m1 12.2 6 
+## m4 15.3 4 
+## m7 17.4 4 
+## m  37.0 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{AICtab}\NormalTok{(m, m1, m2, m3, m4, m5, m6, m7, m8, m9, m11, m12, m14, m15,m16, m17, m18,m19, m20, m21, m22)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     dAIC df
+## m16  0.0 5 
+## m20  1.6 6 
+## m17  2.1 5 
+## m2   2.4 4 
+## m9   3.2 4 
+## m14  3.8 5 
+## m15  3.9 5 
+## m21  4.0 8 
+## m12  6.0 7 
+## m5   6.6 4 
+## m22  7.9 8 
+## m3  10.3 4 
+## m19 11.4 5 
+## m11 12.2 7 
+## m18 12.3 5 
+## m8  12.7 4 
+## m6  14.4 4 
+## m1  14.6 6 
+## m4  17.8 4 
+## m7  19.8 4 
+## m   39.4 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tidy}\NormalTok{(m16, }\AttributeTok{conf.int =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 5
+##   term          estimate std.error conf.low conf.high
+##   <chr>            <dbl>     <dbl>    <dbl>     <dbl>
+## 1 max.cov          0.689    0.0750    0.542     0.836
+## 2 mean.site.cov   -0.365    0.124    -0.608    -0.123
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sanity}\NormalTok{(m16) }\CommentTok{\# a check from sdmTMB, not fitting well}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## v Non-linear minimizer suggests successful convergence
+\end{verbatim}
+
+\begin{verbatim}
+## v Hessian matrix is positive definite
+\end{verbatim}
+
+\begin{verbatim}
+## v No extreme or very small eigenvalues detected
+\end{verbatim}
+
+\begin{verbatim}
+## v No gradients with respect to fixed effects are >= 0.001
+\end{verbatim}
+
+\begin{verbatim}
+## v No fixed-effect standard errors are NA
+\end{verbatim}
+
+\begin{verbatim}
+## x `ln_tau_G` standard error may be large
+\end{verbatim}
+
+\begin{verbatim}
+## i `ln_tau_G` is an internal parameter affecting `sigma_G`
+\end{verbatim}
+
+\begin{verbatim}
+## i `sigma_G` is the random intercept standard deviation
+\end{verbatim}
+
+\begin{verbatim}
+## i Try simplifying the model, adjusting the mesh, or adding priors
+\end{verbatim}
+
+\begin{verbatim}
+## x `sigma_G` is smaller than 0.01
+\end{verbatim}
+
+\begin{verbatim}
+## i Consider omitting this part of the model
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sanity}\NormalTok{(m2) }\CommentTok{\# a check from sdmTMB for the model with just max.cov}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## v Non-linear minimizer suggests successful convergence
+\end{verbatim}
+
+\begin{verbatim}
+## v Hessian matrix is positive definite
+\end{verbatim}
+
+\begin{verbatim}
+## v No extreme or very small eigenvalues detected
+\end{verbatim}
+
+\begin{verbatim}
+## v No gradients with respect to fixed effects are >= 0.001
+\end{verbatim}
+
+\begin{verbatim}
+## v No fixed-effect standard errors are NA
+\end{verbatim}
+
+\begin{verbatim}
+## v No standard errors look unreasonably large
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are < 0.01
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are > 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tidy}\NormalTok{(m16, }\AttributeTok{conf.int =} \ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 5
+##   term          estimate std.error conf.low conf.high
+##   <chr>            <dbl>     <dbl>    <dbl>     <dbl>
+## 1 max.cov          0.689    0.0750    0.542     0.836
+## 2 mean.site.cov   -0.365    0.124    -0.608    -0.123
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tidy}\NormalTok{(m2, }\AttributeTok{conf.int =} \ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 5
+##   term    estimate std.error conf.low conf.high
+##   <chr>      <dbl>     <dbl>    <dbl>     <dbl>
+## 1 max.cov    0.444    0.0375    0.370     0.517
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m16)) }\CommentTok{\# look  at residuals}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m16, }\AttributeTok{type =} \StringTok{"mle{-}mcmc"}\NormalTok{)) }\CommentTok{\# another way to calculate them using mcmc, got from Philina\textquotesingle{}s mesh building vignette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## SAMPLING FOR MODEL 'tmb_generic' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:   1 / 500 [  0%]  (Warmup)
+## Chain 1: Iteration:  50 / 500 [ 10%]  (Warmup)
+## Chain 1: Iteration: 100 / 500 [ 20%]  (Warmup)
+## Chain 1: Iteration: 150 / 500 [ 30%]  (Warmup)
+## Chain 1: Iteration: 200 / 500 [ 40%]  (Warmup)
+## Chain 1: Iteration: 250 / 500 [ 50%]  (Warmup)
+## Chain 1: Iteration: 251 / 500 [ 50%]  (Sampling)
+## Chain 1: Iteration: 300 / 500 [ 60%]  (Sampling)
+## Chain 1: Iteration: 350 / 500 [ 70%]  (Sampling)
+## Chain 1: Iteration: 400 / 500 [ 80%]  (Sampling)
+## Chain 1: Iteration: 450 / 500 [ 90%]  (Sampling)
+## Chain 1: Iteration: 500 / 500 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.031 seconds (Warm-up)
+## Chain 1:                0.036 seconds (Sampling)
+## Chain 1:                0.067 seconds (Total)
+## Chain 1:
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: The largest R-hat is 1.07, indicating chains have not mixed.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#r-hat
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m16)) }\CommentTok{\# qqnorm plot}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =} \DecValTok{0}\NormalTok{, }\AttributeTok{b =} \DecValTok{1}\NormalTok{) }\CommentTok{\# add 1:1 line}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visreg}\SpecialCharTok{::}\FunctionTok{visreg}\NormalTok{(m16, }\StringTok{"max.cov"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-4.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m2)) }\CommentTok{\# look  at residuals}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-5.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m2, }\AttributeTok{type =} \StringTok{"mle{-}mcmc"}\NormalTok{)) }\CommentTok{\# another way to calculate them using mcmc, got from Philina\textquotesingle{}s mesh building vignette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## SAMPLING FOR MODEL 'tmb_generic' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:   1 / 500 [  0%]  (Warmup)
+## Chain 1: Iteration:  50 / 500 [ 10%]  (Warmup)
+## Chain 1: Iteration: 100 / 500 [ 20%]  (Warmup)
+## Chain 1: Iteration: 150 / 500 [ 30%]  (Warmup)
+## Chain 1: Iteration: 200 / 500 [ 40%]  (Warmup)
+## Chain 1: Iteration: 250 / 500 [ 50%]  (Warmup)
+## Chain 1: Iteration: 251 / 500 [ 50%]  (Sampling)
+## Chain 1: Iteration: 300 / 500 [ 60%]  (Sampling)
+## Chain 1: Iteration: 350 / 500 [ 70%]  (Sampling)
+## Chain 1: Iteration: 400 / 500 [ 80%]  (Sampling)
+## Chain 1: Iteration: 450 / 500 [ 90%]  (Sampling)
+## Chain 1: Iteration: 500 / 500 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.048 seconds (Warm-up)
+## Chain 1:                0.04 seconds (Sampling)
+## Chain 1:                0.088 seconds (Total)
+## Chain 1:
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#bulk-ess
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#tail-ess
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-6.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(m2)) }\CommentTok{\# qqnorm plot}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =} \DecValTok{0}\NormalTok{, }\AttributeTok{b =} \DecValTok{1}\NormalTok{) }\CommentTok{\# add 1:1 line}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-7.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visreg}\SpecialCharTok{::}\FunctionTok{visreg}\NormalTok{(m2, }\StringTok{"max.cov"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-13-8.pdf}
+
+\hypertarget{okay-i-vote-we-scrap-complexity-and-go-back-to-the-original-model-set-becuase-then-we-have-more-data-to-use-because-we-can-include-larsen-bay-see-below-dataset-as-test}{%
+\subsubsection{okay I vote we scrap complexity and go back to the
+original model set becuase then we have more data to use because we can
+include larsen bay see below dataset as
+test}\label{okay-i-vote-we-scrap-complexity-and-go-back-to-the-original-model-set-becuase-then-we-have-more-data-to-use-because-we-can-include-larsen-bay-see-below-dataset-as-test}}
+
+\hypertarget{rockfish-richness}{%
+\section{Rockfish richness}\label{rockfish-richness}}
+
+\hypertarget{non-schooling-rockfish-models-no-yellowtail-1}{%
+\subsection{Non-schooling rockfish models (no
+yellowtail)}\label{non-schooling-rockfish-models-no-yellowtail-1}}
+
+\hypertarget{question-1.-does-rockfish-richness-differ-between-rocky-reefs-sponge-gardens-and-sponge-reefs}{%
+\subsubsection{Question 1. Does rockfish richness differ between rocky
+reefs, sponge gardens and sponge
+reefs?}\label{question-1.-does-rockfish-richness-differ-between-rocky-reefs-sponge-gardens-and-sponge-reefs}}
+
+(*Do we have enough data on sponge reefs? Should we add them to
+bioherms? rocky reefs? Hmmm question for discussion). Fitting a
+negbinom2 because count data and zeros but it is not currently
+converging\ldots.
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-15-2.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-15-3.pdf}
+
+Not working\ldots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Simple comparison between a NULL model and one with habitat type}
+
+\NormalTok{null.rich }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ richness }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{nbinom2}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }
+            \AttributeTok{data =}\NormalTok{ rf.richness, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+\NormalTok{rich1 }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ richness }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ habitat\_type }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{nbinom2}\NormalTok{(}\AttributeTok{link =} \StringTok{"log"}\NormalTok{), }
+                \AttributeTok{data =}\NormalTok{ rf.richness, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in sqrt(diag(cov)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: The model may not have converged: non-positive-definite Hessian matrix.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{AICtab}\NormalTok{(null.rich, rich1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           dAIC df
+## rich1     0.0  5 
+## null.rich 4.3  2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sanity}\NormalTok{(rich1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## x Non-linear minimizer did not converge: do not trust this model!
+\end{verbatim}
+
+\begin{verbatim}
+## i Try simplifying the model, adjusting the mesh, or adding priors
+\end{verbatim}
+
+\begin{verbatim}
+## x Non-positive-definite Hessian matrix: model may not have converged
+## i Try simplifying the model, adjusting the mesh, or adding priors
+\end{verbatim}
+
+\begin{verbatim}
+## v No extreme or very small eigenvalues detected
+\end{verbatim}
+
+\begin{verbatim}
+## v No gradients with respect to fixed effects are >= 0.001
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## x `ln_phi` standard error is NA
+\end{verbatim}
+
+\begin{verbatim}
+## i Try simplifying the model, adjusting the mesh, or adding priors
+\end{verbatim}
+
+\begin{verbatim}
+## x `phi` standard error is NA
+## i Try simplifying the model, adjusting the mesh, or adding priors
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## v No standard errors look unreasonably large
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are < 0.01
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are > 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(rich1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Model fit by ML ['sdmTMB']
+## Formula: richness ~ 0 + habitat_type + (1 | site)
+## Mesh: mesh
+## Data: rf.richness
+## Family: nbinom2(link = 'log')
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+##  
+##                           coef.est coef.se
+## habitat_typerocky reef        0.61    0.16
+## habitat_typesponge reef       0.62    0.30
+## habitat_typesponge garden     0.10    0.44
+## 
+## Random intercepts:
+##      Std. Dev.
+## site      0.29
+## 
+## Dispersion parameter: 10463761.22
+## ML criterion at convergence: 67.603
+## 
+## See ?tidy.sdmTMB to extract these values as a data frame.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(rich1)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-16-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(rich1, }\AttributeTok{type =} \StringTok{"mle{-}mcmc"}\NormalTok{)) }\CommentTok{\# another way to calculate them using mcmc, got from Philina\textquotesingle{}s mesh building vignette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+
+## Warning in sqrt(diag(object$cov.fixed)): NaNs produced
+\end{verbatim}
+
+\begin{verbatim}
+## 
+## SAMPLING FOR MODEL 'tmb_generic' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:   1 / 500 [  0%]  (Warmup)
+## Chain 1: Iteration:  50 / 500 [ 10%]  (Warmup)
+## Chain 1: Iteration: 100 / 500 [ 20%]  (Warmup)
+## Chain 1: Iteration: 150 / 500 [ 30%]  (Warmup)
+## Chain 1: Iteration: 200 / 500 [ 40%]  (Warmup)
+## Chain 1: Iteration: 250 / 500 [ 50%]  (Warmup)
+## Chain 1: Iteration: 251 / 500 [ 50%]  (Sampling)
+## Chain 1: Iteration: 300 / 500 [ 60%]  (Sampling)
+## Chain 1: Iteration: 350 / 500 [ 70%]  (Sampling)
+## Chain 1: Iteration: 400 / 500 [ 80%]  (Sampling)
+## Chain 1: Iteration: 450 / 500 [ 90%]  (Sampling)
+## Chain 1: Iteration: 500 / 500 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.096 seconds (Warm-up)
+## Chain 1:                0.08 seconds (Sampling)
+## Chain 1:                0.176 seconds (Total)
+## Chain 1:
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Bulk Effective Samples Size (ESS) is too low, indicating posterior means and medians may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#bulk-ess
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-16-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(rich1)) }\CommentTok{\# qqnorm plot}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =} \DecValTok{0}\NormalTok{, }\AttributeTok{b =} \DecValTok{1}\NormalTok{) }\CommentTok{\# add 1:1 line}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-16-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visreg}\SpecialCharTok{::}\FunctionTok{visreg}\NormalTok{(rich1, }\StringTok{"habitat\_type"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-16-4.pdf}
+
+\hypertarget{lengths}{%
+\section{Lengths}\label{lengths}}
+
+Do we want to keep it as length? This would allow us to use individual
+fish but we have no rockfish at two sites (boot sponge wall, field of
+1000) Or do we convert to biomass so that we have one measure at each
+site (then we could have a zero for the two sites with no fish)
+
+\begin{verbatim}
+## # A tibble: 1,754 x 35
+##    Filename Frame Time ~1 Period Perio~2 lengt~3 Preci~4 RMS (~5 Range~6 Direc~7
+##    <chr>    <dbl>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Left (2~ 20248    28.9 <NA>    NA         NA     1.34   0.472   1022.    4.95
+##  2 Left (2~ 20338    28.9 <NA>    NA         NA     1.19   0.252    951.    2.62
+##  3 Left (2~ 20580    29.1 <NA>    NA         NA     1.34   0.151   1018.    5.45
+##  4 Left (2~ 20670    29.1 <NA>    NA         NA     1.20   0.14     944.   10.9 
+##  5 Left (2~ 20873    29.2 <NA>    NA         NA     1.35   0.341   1024.    5.61
+##  6 Left (2~ 20963    29.3 <NA>    NA         NA     1.22   0.32     961.    5.67
+##  7 Left (2~ 26544    32.4 <NA>    NA        258.    0.92   1.10     816.   13.5 
+##  8 Left (2~ 26574    32.4 <NA>    NA        219.    1.03   0.249    783.   25.0 
+##  9 Left (2~ 27623    33.0 60min~   0.495    257.    3.28   0.375   1536.   26.6 
+## 10 Left (2~ 27738    33.1 60min~   0.559    225.    2.73   0.414   1427.    6.89
+## # ... with 1,744 more rows, 25 more variables: `Horz. Dir. (deg)` <dbl>,
+## #   `Vert. Dir. (deg)` <dbl>, `Mid X (mm)` <dbl>, `Mid Y (mm)` <dbl>,
+## #   `Mid Z (mm)` <dbl>, OpCode <chr>, TapeReader <chr>, Depth <dbl>,
+## #   Comment...19 <lgl>, Date <chr>, Time <time>, habitat_type <chr>,
+## #   complexity <lgl>, current_speed <lgl>, temperature <lgl>,
+## #   left_camera <dbl>, right_camera <dbl>, Family <chr>, Genus <chr>,
+## #   Species <chr>, Code <dbl>, Number <dbl>, Stage <chr>, Activity <chr>, ...
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 22 x 1
+##    site                  
+##    <chr>                 
+##  1 birdislet             
+##  2 christiebuoy          
+##  3 cliffcove             
+##  4 defenceinshorebioherm 
+##  5 defenceoffshorebioherm
+##  6 defencesouthside      
+##  7 halkettbayeast        
+##  8 halkettbioherm        
+##  9 halkettsign           
+## 10 helipad               
+## 11 huttcloudpair         
+## 12 larsenbay             
+## 13 NEbowyer              
+## 14 Nechristie            
+## 15 northpamrocks         
+## 16 Nwpassage             
+## 17 passagebioherm        
+## 18 porteaurockpile       
+## 19 porteauslide          
+## 20 southpassage          
+## 21 tennisboatramp        
+## 22 tenniscourts
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 25 x 1
+##    site                  
+##    <chr>                 
+##  1 ansellpoint           
+##  2 birdislet             
+##  3 bootspongewall        
+##  4 christiebuoy          
+##  5 cliffcove             
+##  6 defenceinshorebioherm 
+##  7 defenceoffshorebioherm
+##  8 defencesouthside      
+##  9 fieldof1000           
+## 10 halkettbayeast        
+## 11 halkettbioherm        
+## 12 halkettsign           
+## 13 helipad               
+## 14 huttcloudpair         
+## 15 larsenbay             
+## 16 NEbowyer              
+## 17 Nechristie            
+## 18 northpamrocks         
+## 19 Nwpassage             
+## 20 passagebioherm        
+## 21 porteaurockpile       
+## 22 porteauslide          
+## 23 southpassage          
+## 24 tennisboatramp        
+## 25 tenniscourts
+\end{verbatim}
+
+\begin{verbatim}
+## # A tibble: 210 x 45
+##    Filename Frame Time ~1 Period Perio~2 lengt~3 Preci~4 RMS (~5 Range~6 Direc~7
+##    <chr>    <dbl>   <dbl> <chr>    <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+##  1 Left_00~   887    35.9 30min~  12.0      292.   11.4    1.20    2698.    38.3
+##  2 Left_00~  1883    36.4 30min~  12.6      367.    4.00   0.485   1747.    34.5
+##  3 Left (2~ 13128    24.9 60min   10.4      204.    3.05   1.29    1153.    31.3
+##  4 Left (2~ 18891    28.1 60min   13.6      312.    4.13   1.12    1170.    26.1
+##  5 Left (2~ 29861    34.2 60min    1.38     288.    2.40   0.148   1156.    12.6
+##  6 Left (3~  2111    36.4 60min    3.59     137.    1.48   0.471    970.    11.7
+##  7 Left (6~  8798    93.1 <NA>    NA        305.    1.09   0.845    926.    14.1
+##  8 Left (2~ 16792    27.0 60min    0.866    300.    9.45   3.81    1898.    34.6
+##  9 Left (3~   409    35.5 60min    9.39     275.    5.19   1.01    1876.    17.0
+## 10 Left (3~  4232    37.6 60min   11.5      339.    3.96   0.639   1202.    21.4
+## # ... with 200 more rows, 35 more variables: `Horz. Dir. (deg)` <dbl>,
+## #   `Vert. Dir. (deg)` <dbl>, `Mid X (mm)` <dbl>, `Mid Y (mm)` <dbl>,
+## #   `Mid Z (mm)` <dbl>, OpCode <chr>, TapeReader <chr>, Depth <dbl>,
+## #   Comment...19 <lgl>, Date <chr>, Time <time>, habitat_type <chr>,
+## #   complexity <lgl>, current_speed <lgl>, temperature <lgl>,
+## #   left_camera <dbl>, right_camera <dbl>, Family <chr>, Genus <chr>,
+## #   Species <chr>, Code <dbl>, Number <dbl>, Stage <chr>, Activity <chr>, ...
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-17-1.pdf}
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-17-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{null.length }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ length.mm }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{gaussian}\NormalTok{(}\AttributeTok{link =} \StringTok{"identity"}\NormalTok{), }
+            \AttributeTok{data =}\NormalTok{ rf.lengths, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+\NormalTok{length.hab }\OtherTok{\textless{}{-}} \FunctionTok{sdmTMB}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ length.mm }\SpecialCharTok{\textasciitilde{}} \DecValTok{0} \SpecialCharTok{+}\NormalTok{ habitat\_type }\SpecialCharTok{+}\NormalTok{ (}\DecValTok{1}\SpecialCharTok{|}\NormalTok{site), }\AttributeTok{mesh =}\NormalTok{ mesh, }\AttributeTok{spatial =} \StringTok{"off"}\NormalTok{, }\AttributeTok{family =} \FunctionTok{gaussian}\NormalTok{(}\AttributeTok{link =} \StringTok{"identity"}\NormalTok{), }
+            \AttributeTok{data =}\NormalTok{ rf.lengths, }\AttributeTok{control =} \FunctionTok{sdmTMBcontrol}\NormalTok{(}\AttributeTok{newton\_loops =} \DecValTok{3}\NormalTok{))}
+
+
+\FunctionTok{AICtab}\NormalTok{(null.length, length.hab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             dAIC df
+## length.hab   0   5 
+## null.length 68   2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sanity}\NormalTok{(length.hab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## v Non-linear minimizer suggests successful convergence
+\end{verbatim}
+
+\begin{verbatim}
+## v Hessian matrix is positive definite
+\end{verbatim}
+
+\begin{verbatim}
+## v No extreme or very small eigenvalues detected
+\end{verbatim}
+
+\begin{verbatim}
+## v No gradients with respect to fixed effects are >= 0.001
+\end{verbatim}
+
+\begin{verbatim}
+## v No fixed-effect standard errors are NA
+\end{verbatim}
+
+\begin{verbatim}
+## v No standard errors look unreasonably large
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are < 0.01
+\end{verbatim}
+
+\begin{verbatim}
+## v No sigma parameters are > 100
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(length.hab)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Model fit by ML ['sdmTMB']
+## Formula: length.mm ~ 0 + habitat_type + (1 | site)
+## Mesh: mesh
+## Data: rf.lengths
+## Family: gaussian(link = 'identity')
+##  
+##                           coef.est coef.se
+## habitat_typerocky reef      266.94   11.68
+## habitat_typesponge garden   161.27   44.04
+## habitat_typesponge reef     284.37   22.66
+## 
+## Random intercepts:
+##      Std. Dev.
+## site     43.06
+## 
+## Dispersion parameter: 44.39
+## ML criterion at convergence: 1116.518
+## 
+## See ?tidy.sdmTMB to extract these values as a data frame.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(length.hab)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(length.hab, }\AttributeTok{type =} \StringTok{"mle{-}mcmc"}\NormalTok{)) }\CommentTok{\# another way to calculate them using mcmc, got from Philina\textquotesingle{}s mesh building vignette}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## SAMPLING FOR MODEL 'tmb_generic' NOW (CHAIN 1).
+## Chain 1: 
+## Chain 1: Gradient evaluation took 0 seconds
+## Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0 seconds.
+## Chain 1: Adjust your expectations accordingly!
+## Chain 1: 
+## Chain 1: 
+## Chain 1: Iteration:   1 / 500 [  0%]  (Warmup)
+## Chain 1: Iteration:  50 / 500 [ 10%]  (Warmup)
+## Chain 1: Iteration: 100 / 500 [ 20%]  (Warmup)
+## Chain 1: Iteration: 150 / 500 [ 30%]  (Warmup)
+## Chain 1: Iteration: 200 / 500 [ 40%]  (Warmup)
+## Chain 1: Iteration: 250 / 500 [ 50%]  (Warmup)
+## Chain 1: Iteration: 251 / 500 [ 50%]  (Sampling)
+## Chain 1: Iteration: 300 / 500 [ 60%]  (Sampling)
+## Chain 1: Iteration: 350 / 500 [ 70%]  (Sampling)
+## Chain 1: Iteration: 400 / 500 [ 80%]  (Sampling)
+## Chain 1: Iteration: 450 / 500 [ 90%]  (Sampling)
+## Chain 1: Iteration: 500 / 500 [100%]  (Sampling)
+## Chain 1: 
+## Chain 1:  Elapsed Time: 0.045 seconds (Warm-up)
+## Chain 1:                0.032 seconds (Sampling)
+## Chain 1:                0.077 seconds (Total)
+## Chain 1:
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Tail Effective Samples Size (ESS) is too low, indicating posterior variances and tail quantiles may be unreliable.
+## Running the chains for more iterations may help. See
+## https://mc-stan.org/misc/warnings.html#tail-ess
+\end{verbatim}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-19-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qqnorm}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(length.hab)) }\CommentTok{\# qqnorm plot}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{a =} \DecValTok{0}\NormalTok{, }\AttributeTok{b =} \DecValTok{1}\NormalTok{) }\CommentTok{\# add 1:1 line}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-19-3.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{visreg}\SpecialCharTok{::}\FunctionTok{visreg}\NormalTok{(length.hab, }\StringTok{"habitat\_type"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{modelling_setup_files/figure-latex/unnamed-chunk-19-4.pdf}
+
+\end{document}
