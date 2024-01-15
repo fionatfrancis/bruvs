@@ -1,0 +1,106 @@
+---
+title: "BRUVs preliminary analysis"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r cars}
+library(tidyverse)
+measurements <- read_csv("bruvs_fish_lengths.csv")
+<<<<<<< HEAD
+=======
+surface <- read_csv("surface_measurement_comparison.csv")
+<<<<<<< HEAD
+abundance <-read_csv("MaxN.csv")
+=======
+>>>>>>> 9c583ed7fe355148b37198cd66f2b8d61b530af5
+
+>>>>>>> da13971b154c6bf17245825ee421b50dea41201f
+head(measurements)
+
+# make a dataframe of just fish lengths
+
+lengths <- measurements %>% drop_na(Species)
+
+head(lengths)
+
+# tidy up and check that lengths are correct
+
+lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(length.mm >500) %>% select(Genus,Species,length.mm, OpCode) %>% print(n=39)
+
+<<<<<<< HEAD
+# clearly there are three rockfish that got mis-measured (three yellowtails probably because they are in schools and were far away) so we will remove them
+=======
+# clearly there are three rockfish that got mis-measured (three yellowtails probably becuase they are in schools and were far away) so we will remove them
+>>>>>>> 9c583ed7fe355148b37198cd66f2b8d61b530af5
+
+lengths <- lengths %>% filter(!(Genus == "Sebastes" & length.mm > 500))
+
+```
+
+
+```{r pressure, echo=FALSE}
+lengths %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = T) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Species == "caurinus") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), show.legend = F) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(Number, length.mm, colour = Species), cex = 2, show.legend = T) +
+  facet_wrap(~habitat_type)
+
+lengths %>% filter(length.mm >500) %>% select(Genus,Species,length.mm, OpCode) %>% print(n=39)
+
+lengths %>% distinct(OpCode)
+
+```
+
+Abundanace data
+
+# MAx N
+
+``` {r MaxN, echo = F}
+abundance
+
+
+abundance %>% filter(Genus == "Sebastes") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), show.legend = T)
+
+abundance %>% filter(Genus == "Sebastes") %>% filter(MaxN <100) %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), cex = 2, show.legend = T)
+
+abundance %>% filter(Species == "maliger") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), alpha = 0.4, size = 3, show.legend = T)
+
+abundance %>% filter(Species == "caurinus") %>% ggplot() + geom_point(aes(habitat_type, MaxN, colour = Species), alpha = 0.4, size = 3, show.legend = T)
+
+```
+
+``` {r current, echo = F}
+
+measurements 
+
+current <- measurements %>% filter(is.na(Species))
+
+```
+
+<<<<<<< HEAD
+=======
+``` {r surface, echo = F}
+
+surface
+
+mean.surface <-surface %>% group_by(site) %>% summarise(mean.ratio = mean(ratio))
+
+ggplot() + geom_point(data = mean.surface, aes(site, mean.ratio))
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+>>>>>>> 9c583ed7fe355148b37198cd66f2b8d61b530af5
